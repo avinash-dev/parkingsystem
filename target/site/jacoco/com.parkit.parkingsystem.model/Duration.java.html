@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Duration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.model</a> &gt; <span class="el_source">Duration.java</span></div><h1>Duration.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.model;
+
+import java.util.Date;
+
+<span class="fc" id="L5">public class Duration {</span>
+
+    private long differenceInTime;
+    private long year;
+    private long month;
+    private long day;
+    private long hour;
+    private long minute;
+    private long seconde;
+
+    public long difference(Date inTime, Date outTime) {
+<span class="fc" id="L16">        this.differenceInTime = outTime.getTime() - inTime.getTime();</span>
+<span class="fc" id="L17">        return differenceInTime;</span>
+    }
+
+    public long getDifferenceInTime() {
+<span class="fc" id="L21">        return differenceInTime;</span>
+    }
+
+    public void setDifferenceInTime(long differenceInTime) {
+<span class="nc" id="L25">        this.differenceInTime = differenceInTime;</span>
+<span class="nc" id="L26">    }</span>
+
+    public long getYear() {
+<span class="nc" id="L29">        return year;</span>
+    }
+
+    public void setYear(long year) {
+<span class="fc" id="L33">        this.year = year;</span>
+<span class="fc" id="L34">    }</span>
+
+    public long getMonth() {
+<span class="fc" id="L37">        return month;</span>
+    }
+
+    public void setMonth(long month) {
+<span class="nc" id="L41">        this.month = month;</span>
+<span class="nc" id="L42">    }</span>
+
+    public long getDay() {
+<span class="fc" id="L45">        return day;</span>
+    }
+
+    public void setDay(long day) {
+<span class="fc" id="L49">        this.day = day;</span>
+<span class="fc" id="L50">    }</span>
+
+    public long getHour() {
+<span class="fc" id="L53">        return hour;</span>
+    }
+
+    public void setHour(long hour) {
+<span class="fc" id="L57">        this.hour = hour;</span>
+<span class="fc" id="L58">    }</span>
+
+    public long getMinute() {
+<span class="fc" id="L61">        return minute;</span>
+    }
+
+    public void setMinute(long minute) {
+<span class="fc" id="L65">        this.minute = minute;</span>
+<span class="fc" id="L66">    }</span>
+
+    public long getSeconde() {
+<span class="nc" id="L69">        return seconde;</span>
+    }
+
+    public void setSeconde(long seconde) {
+<span class="fc" id="L73">        this.seconde = seconde;</span>
+<span class="fc" id="L74">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
