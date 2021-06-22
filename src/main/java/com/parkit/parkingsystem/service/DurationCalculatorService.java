@@ -1,8 +1,8 @@
 package com.parkit.parkingsystem.service;
 
-import com.parkit.parkingsystem.model.Duration;
-
 import java.time.LocalDateTime;
+
+import com.parkit.parkingsystem.model.Duration;
 
 public class DurationCalculatorService {
 
@@ -11,7 +11,6 @@ public class DurationCalculatorService {
         Duration duration = new Duration();
         duration.difference(inTime, outTime);
 
-        duration.setSeconde((duration.getDifferenceInTime() / 1000) % 60);
         duration.setMinute((duration.getDifferenceInTime() / (1000 * 60)) % 60);
         duration.setHour((duration.getDifferenceInTime() / (1000 * 60 * 60)) % 24);
         duration.setDay((duration.getDifferenceInTime() / (1000 * 60 * 60 * 24)) % 365);

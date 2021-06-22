@@ -59,7 +59,4 @@ public class Duration {
     public void setMinute(long minute) {
         this.minute = minute;
     }
-
-    public void setSeconde(long seconde) {
-    }
 }

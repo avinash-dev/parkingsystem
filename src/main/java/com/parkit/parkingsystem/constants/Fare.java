@@ -1,7 +1,6 @@
 package com.parkit.parkingsystem.constants;
 
 public class Fare {
-
     public static final double CAR_RATE_PER_HOUR = 1.5;
     public static final double CAR_RATE_PER_DAY = 24 * CAR_RATE_PER_HOUR;
     public static final double CAR_RATE_PER_MONTH = 30 * CAR_RATE_PER_DAY;
