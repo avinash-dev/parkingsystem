@@ -9,7 +9,7 @@ import java.util.Objects;
 public class FareCalculatorService {
 
     public void calculateFare(Ticket ticket) {
-        if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
+        if ((ticket.getOutTime() == null) || (ticket.getOutTime().isBefore(ticket.getInTime()))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + Objects.requireNonNull(ticket.getOutTime()).toString());
         }
         // False, we need all the intel : date and time exactly

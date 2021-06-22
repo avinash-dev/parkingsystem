@@ -1,6 +1,7 @@
 package com.parkit.parkingsystem.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 public class Duration {
 
@@ -10,19 +11,13 @@ public class Duration {
     private long day;
     private long hour;
     private long minute;
-    private long seconde;
 
-    public long difference(Date inTime, Date outTime) {
-        this.differenceInTime = outTime.getTime() - inTime.getTime();
-        return differenceInTime;
+    public void difference(LocalDateTime inTime, LocalDateTime outTime) {
+        this.differenceInTime = outTime.toInstant(ZoneOffset.UTC).toEpochMilli() - inTime.toInstant(ZoneOffset.UTC).toEpochMilli();
     }
 
     public long getDifferenceInTime() {
         return differenceInTime;
-    }
-
-    public void setDifferenceInTime(long differenceInTime) {
-        this.differenceInTime = differenceInTime;
     }
 
     public long getYear() {
@@ -65,11 +60,6 @@ public class Duration {
         this.minute = minute;
     }
 
-    public long getSeconde() {
-        return seconde;
-    }
-
     public void setSeconde(long seconde) {
-        this.seconde = seconde;
     }
 }
