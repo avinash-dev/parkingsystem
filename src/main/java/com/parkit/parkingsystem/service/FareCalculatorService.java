@@ -1,16 +1,16 @@
 package com.parkit.parkingsystem.service;
 
+import java.util.Objects;
+
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Duration;
 import com.parkit.parkingsystem.model.Ticket;
-
-import java.util.Objects;
 
 public class FareCalculatorService {
 
     public void calculateFare(Ticket ticket) {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().isBefore(ticket.getInTime()))) {
-            throw new IllegalArgumentException("Out time provided is incorrect:" + Objects.requireNonNull(ticket.getOutTime()).toString());
+            throw new IllegalArgumentException("Out time provided is incorrect:" + Objects.requireNonNull(ticket.getOutTime()));
         }
         // False, we need all the intel : date and time exactly
 //        int inHour = ticket.getInTime().getHours();
@@ -20,27 +20,43 @@ public class FareCalculatorService {
 
 
         DurationCalculatorService durationCalculatorService = new DurationCalculatorService();
-        Duration duration = durationCalculatorService.calculateDifference(ticket.getInTime(), ticket.getOutTime());
+        Duration duration = durationCalculatorService.calculateDifference_WithFreeTime(ticket.getInTime(), ticket.getOutTime());
 
 
         switch (ticket.getParkingSpot().getParkingType()) {
             case CAR: {
-                double price = duration.getMonth() * Fare.CAR_RATE_PER_MONTH
-                        + duration.getDay() * Fare.CAR_RATE_PER_DAY
-                        + duration.getHour() * Fare.CAR_RATE_PER_HOUR
-                        + duration.getMinute() * Fare.CAR_RATE_PER_MINUTE;
-                ticket.setPrice(price);
+                if (duration.isFree()) {
+                    ticket.setPrice(0);
+                } else {
+                    ticket.setPrice(carTicketPrice(duration));
+                }
                 break;
             }
             case BIKE: {
-                double price = duration.getMonth() * Fare.BIKE_RATE_PER_MONTH
-                        + duration.getDay() * Fare.BIKE_RATE_PER_DAY
-                        + duration.getHour() * Fare.BIKE_RATE_PER_HOUR
-                        + duration.getMinute() * Fare.BIKE_RATE_PER_MINUTE;
-                ticket.setPrice(price);
+                if (duration.isFree()) {
+                    ticket.setPrice(0);
+                } else {
+                    ticket.setPrice(bikeTicketPrice(duration));
+                }
                 break;
             }
             default: throw new IllegalArgumentException("Unkown Parking Type");
         }
+    }
+
+    public double carTicketPrice(Duration duration) {
+        return (Fare.CAR_RATE_PER_MONTH * duration.getMonth()
+                + duration.getDay() * Fare.CAR_RATE_PER_DAY
+                + duration.getHour() * Fare.CAR_RATE_PER_HOUR
+                + duration.getMinute() * Fare.CAR_RATE_PER_MINUTE
+                - Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.CAR_RATE_PER_MINUTE);
+    }
+
+    public double bikeTicketPrice(Duration duration) {
+        return (duration.getMonth() * Fare.BIKE_RATE_PER_MONTH
+                + duration.getDay() * Fare.BIKE_RATE_PER_DAY
+                + duration.getHour() * Fare.BIKE_RATE_PER_HOUR
+                + duration.getMinute() * Fare.BIKE_RATE_PER_MINUTE
+                - Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.BIKE_RATE_PER_MINUTE);
     }
 }

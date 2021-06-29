@@ -12,8 +12,14 @@ public class Duration {
     private long hour;
     private long minute;
 
-    public void difference(LocalDateTime inTime, LocalDateTime outTime) {
-        this.differenceInTime = outTime.toInstant(ZoneOffset.UTC).toEpochMilli() - inTime.toInstant(ZoneOffset.UTC).toEpochMilli();
+    private boolean free;
+
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
     }
 
     public long getDifferenceInTime() {
@@ -58,5 +64,10 @@ public class Duration {
 
     public void setMinute(long minute) {
         this.minute = minute;
+    }
+
+    public void differenceWithFreeTime(LocalDateTime inTime, LocalDateTime outTime) {
+        this.differenceInTime = outTime.toInstant(ZoneOffset.UTC).toEpochMilli()
+                - inTime.toInstant(ZoneOffset.UTC).toEpochMilli();
     }
 }

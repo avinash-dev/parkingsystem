@@ -1,15 +1,19 @@
 package com.parkit.parkingsystem.service;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.TimeUnit;
 
+import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Duration;
 
 public class DurationCalculatorService {
 
-    public Duration calculateDifference(LocalDateTime inTime, LocalDateTime outTime) {
+    public Duration calculateDifference_WithFreeTime(LocalDateTime inTime, LocalDateTime outTime) {
 
         Duration duration = new Duration();
-        duration.difference(inTime, outTime);
+        duration.differenceWithFreeTime(inTime, outTime);
+
+        duration.setFree(duration.getDifferenceInTime() <= TimeUnit.MINUTES.toMillis(Fare.FREE_PARKING_TIME_IN_MINUTE));
 
         duration.setMinute((duration.getDifferenceInTime() / (1000 * 60)) % 60);
         duration.setHour((duration.getDifferenceInTime() / (1000 * 60 * 60)) % 24);

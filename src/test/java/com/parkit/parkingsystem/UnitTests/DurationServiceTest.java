@@ -1,13 +1,14 @@
 package com.parkit.parkingsystem.UnitTests;
 
-import com.parkit.parkingsystem.model.Duration;
-import com.parkit.parkingsystem.service.DurationCalculatorService;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import com.parkit.parkingsystem.model.Duration;
+import com.parkit.parkingsystem.service.DurationCalculatorService;
 
 public class DurationServiceTest {
 
@@ -26,7 +27,7 @@ public class DurationServiceTest {
         LocalDateTime outTime = LocalDateTime.now();
 
         // WHEN
-        Duration duration = durationCalculatorService.calculateDifference(inTime, outTime);
+        Duration duration = durationCalculatorService.calculateDifference_WithFreeTime(inTime, outTime);
 
         // THEN
         assertThat(duration.getHour()).isEqualTo(1);

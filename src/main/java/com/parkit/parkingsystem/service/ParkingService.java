@@ -1,15 +1,21 @@
 package com.parkit.parkingsystem.service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.parkit.parkingsystem.config.DataBaseConfig;
+import com.parkit.parkingsystem.constants.DBConstants;
 import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.dao.ParkingSpotDAO;
 import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.util.InputReaderUtil;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.time.LocalDateTime;
 
 public class ParkingService {
 
@@ -21,6 +27,8 @@ public class ParkingService {
     private final ParkingSpotDAO parkingSpotDAO;
     private final TicketDAO ticketDAO;
 
+    public DataBaseConfig dataBaseConfig = new DataBaseConfig();
+
     public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
         this.inputReaderUtil = inputReaderUtil;
         this.parkingSpotDAO = parkingSpotDAO;
@@ -31,7 +39,12 @@ public class ParkingService {
         try {
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
             if (parkingSpot != null && parkingSpot.getId() > 0) {
-                String vehicleRegNumber = getVehichleRegNumber();
+                boolean recurringCustomer = false;
+                String vehicleRegNumber = getVehicleRegNumber();
+                if (checkVehicleRegNumber(vehicleRegNumber)) {
+                    recurringCustomer = true;
+                    System.out.println("Welcome back! As a recurring user of our parking lot, you'll benefit from a 5% discount.");
+                }
                 parkingSpot.setAvailable(false);
                 parkingSpotDAO.updateParking(parkingSpot);//allocate this parking space and mark it's availability as false
 
@@ -54,7 +67,17 @@ public class ParkingService {
         }
     }
 
-    private String getVehichleRegNumber() {
+    private boolean checkVehicleRegNumber(String vehicleRegNumber) {
+        try {
+            Connection con = dataBaseConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET);
+        } catch (SQLException | ClassNotFoundException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return true;
+    }
+
+    private String getVehicleRegNumber() {
         System.out.println("Please type the vehicle registration number and press enter key");
         return inputReaderUtil.readVehicleRegistrationNumber();
     }
@@ -99,7 +122,7 @@ public class ParkingService {
 
     public void processExitingVehicle() {
         try{
-            String vehicleRegNumber = getVehichleRegNumber();
+            String vehicleRegNumber = getVehicleRegNumber();
             Ticket ticket = ticketDAO.getTicket(vehicleRegNumber);
             LocalDateTime outTime = LocalDateTime.now();
             ticket.setOutTime(outTime);

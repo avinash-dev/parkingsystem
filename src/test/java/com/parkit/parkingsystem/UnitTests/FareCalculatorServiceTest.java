@@ -1,17 +1,19 @@
 package com.parkit.parkingsystem.UnitTests;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.service.FareCalculatorService;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class FareCalculatorServiceTest {
 
@@ -40,7 +42,7 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
 
         // THEN
-        assertThat(Fare.CAR_RATE_PER_HOUR).isEqualTo(ticket.getPrice());
+        assertThat(ticket.getPrice()).isEqualTo(Fare.CAR_RATE_PER_HOUR - (Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.CAR_RATE_PER_MINUTE));
     }
 
     @Test
@@ -60,7 +62,7 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
 
         // THEN
-        assertThat(Fare.BIKE_RATE_PER_HOUR).isEqualTo(ticket.getPrice());
+        assertThat(ticket.getPrice()).isEqualTo(Fare.BIKE_RATE_PER_HOUR - (Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.BIKE_RATE_PER_MINUTE));
     }
 
     @Test
@@ -118,7 +120,7 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
 
         // THEN
-        assertThat(ticket.getPrice()).isEqualTo(0.75 * Fare.BIKE_RATE_PER_HOUR);
+        assertThat(ticket.getPrice()).isEqualTo((0.75 * Fare.BIKE_RATE_PER_HOUR) - (Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.BIKE_RATE_PER_MINUTE));
     }
 
     @Test
@@ -138,7 +140,7 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
 
         // THEN
-        assertThat(ticket.getPrice()).isEqualTo(0.75 * Fare.CAR_RATE_PER_HOUR);
+        assertThat(ticket.getPrice()).isEqualTo((0.75 * Fare.CAR_RATE_PER_HOUR) - (Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.CAR_RATE_PER_MINUTE));
     }
 
     @Test
@@ -158,7 +160,29 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
 
         // THEN
-        assertThat(ticket.getPrice()).isEqualTo(Fare.CAR_RATE_PER_DAY);
+        assertThat(ticket.getPrice()).isEqualTo(Fare.CAR_RATE_PER_DAY - (Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.CAR_RATE_PER_MINUTE));
+    }
+
+    @Test
+    @Disabled
+    public void calculateFareCar_ForRecurentUser() {
+
+        // GIVEN
+        LocalDateTime inTime = LocalDateTime.now().minusHours(1);
+        LocalDateTime outTime = LocalDateTime.now();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
+
+        Ticket ticket = new Ticket();
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+
+        // WHEN
+        fareCalculatorService.calculateFare(ticket);
+
+        // THEN
+        assertThat(ticket.getPrice()).isEqualTo(
+                (Fare.CAR_RATE_PER_HOUR - (Fare.FREE_PARKING_TIME_IN_MINUTE * Fare.CAR_RATE_PER_MINUTE)) * (1 - Fare.RECURRING_USER_DISCOUNT));
     }
 
 }
