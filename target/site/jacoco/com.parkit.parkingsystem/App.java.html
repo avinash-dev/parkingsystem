@@ -4,11 +4,23 @@ import com.parkit.parkingsystem.service.InteractiveShell;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-<span class="nc" id="L7">public class App {</span>
-<span class="nc" id="L8">    private static final Logger logger = LogManager.getLogger(&quot;App&quot;);</span>
-    public static void main(String args[]){
-<span class="nc" id="L10">        logger.info(&quot;Initializing Parking System&quot;);</span>
-<span class="nc" id="L11">        InteractiveShell.loadInterface();</span>
-<span class="nc" id="L12">    }</span>
+/**
+ * The type App.
+ */
+<span class="nc" id="L10">public class App {</span>
+    /**
+     * The constant logger.
+     */
+<span class="nc" id="L14">    private static final Logger logger = LogManager.getLogger(&quot;App&quot;);</span>
+
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
+<span class="nc" id="L22">        logger.info(&quot;Initializing Parking System&quot;);</span>
+<span class="nc" id="L23">        InteractiveShell.loadInterface();</span>
+<span class="nc" id="L24">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

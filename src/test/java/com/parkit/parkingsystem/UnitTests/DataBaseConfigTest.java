@@ -14,20 +14,35 @@ import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * The type Data base config test.
+ */
 @ExtendWith(MockitoExtension.class)
 public class DataBaseConfigTest {
 
+    /**
+     * The constant dataBaseConfig.
+     */
     private static DataBaseConfig dataBaseConfig;
 
+    /**
+     * The Ps.
+     */
     @Mock
     PreparedStatement ps;
 
 
+    /**
+     * Data base config instance.
+     */
     @BeforeAll
     static void DataBaseConfigInstance() {
         dataBaseConfig = new DataBaseConfig();
     }
 
+    /**
+     * Db connection should be true.
+     */
     @Test
     public void DBConnection_ShouldBeTrue() {
         // GIVEN
@@ -46,6 +61,9 @@ public class DataBaseConfigTest {
     }
 
 
+    /**
+     * Db closing result set should be void.
+     */
     @Test
     public void DBClosingResultSet_ShouldBeVoid() {
         // GIVEN

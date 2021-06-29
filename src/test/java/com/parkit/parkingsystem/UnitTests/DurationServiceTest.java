@@ -1,24 +1,35 @@
 package com.parkit.parkingsystem.UnitTests;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.time.LocalDateTime;
-
+import com.parkit.parkingsystem.model.Duration;
+import com.parkit.parkingsystem.service.DurationCalculatorService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.parkit.parkingsystem.model.Duration;
-import com.parkit.parkingsystem.service.DurationCalculatorService;
+import java.time.LocalDateTime;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+/**
+ * The type Duration service test.
+ */
 public class DurationServiceTest {
 
+    /**
+     * The constant durationCalculatorService.
+     */
     private static DurationCalculatorService durationCalculatorService;
 
+    /**
+     * Sets up.
+     */
     @BeforeAll
     private static void setUp() {
         durationCalculatorService = new DurationCalculatorService();
     }
 
+    /**
+     * Sets up duration should return correct duration.
+     */
     @Test
     public void setUpDuration_shouldReturnCorrectDuration() {
 

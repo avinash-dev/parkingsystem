@@ -1,76 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Duration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.model</a> &gt; <span class="el_source">Duration.java</span></div><h1>Duration.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
-<span class="fc" id="L5">public class Duration {</span>
+/**
+ * The type Duration.
+ */
+<span class="fc" id="L9">public class Duration {</span>
 
+    /**
+     * The Difference in time.
+     */
     private long differenceInTime;
+    /**
+     * The Year.
+     */
     private long year;
+    /**
+     * The Month.
+     */
     private long month;
+    /**
+     * The Day.
+     */
     private long day;
+    /**
+     * The Hour.
+     */
     private long hour;
+    /**
+     * The Minute.
+     */
     private long minute;
-    private long seconde;
 
-    public long difference(Date inTime, Date outTime) {
-<span class="fc" id="L16">        this.differenceInTime = outTime.getTime() - inTime.getTime();</span>
-<span class="fc" id="L17">        return differenceInTime;</span>
+    /**
+     * The Free.
+     */
+    private boolean free;
+
+    /**
+     * Is free boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isFree() {
+<span class="fc" id="L47">        return free;</span>
     }
 
+    /**
+     * Sets free.
+     *
+     * @param free the free
+     */
+    public void setFree(boolean free) {
+<span class="fc" id="L56">        this.free = free;</span>
+<span class="fc" id="L57">    }</span>
+
+    /**
+     * Gets difference in time.
+     *
+     * @return the difference in time
+     */
     public long getDifferenceInTime() {
-<span class="fc" id="L21">        return differenceInTime;</span>
+<span class="fc" id="L65">        return differenceInTime;</span>
     }
 
-    public void setDifferenceInTime(long differenceInTime) {
-<span class="nc" id="L25">        this.differenceInTime = differenceInTime;</span>
-<span class="nc" id="L26">    }</span>
-
+    /**
+     * Gets year.
+     *
+     * @return the year
+     */
     public long getYear() {
-<span class="nc" id="L29">        return year;</span>
+<span class="fc" id="L74">        return year;</span>
     }
 
+    /**
+     * Sets year.
+     *
+     * @param year the year
+     */
     public void setYear(long year) {
-<span class="fc" id="L33">        this.year = year;</span>
-<span class="fc" id="L34">    }</span>
+<span class="fc" id="L83">        this.year = year;</span>
+<span class="fc" id="L84">    }</span>
 
+    /**
+     * Gets month.
+     *
+     * @return the month
+     */
     public long getMonth() {
-<span class="fc" id="L37">        return month;</span>
+<span class="fc" id="L92">        return month;</span>
     }
 
+    /**
+     * Sets month.
+     *
+     * @param month the month
+     */
     public void setMonth(long month) {
-<span class="nc" id="L41">        this.month = month;</span>
-<span class="nc" id="L42">    }</span>
+<span class="fc" id="L101">        this.month = month;</span>
+<span class="fc" id="L102">    }</span>
 
+    /**
+     * Gets day.
+     *
+     * @return the day
+     */
     public long getDay() {
-<span class="fc" id="L45">        return day;</span>
+<span class="fc" id="L110">        return day;</span>
     }
 
+    /**
+     * Sets day.
+     *
+     * @param day the day
+     */
     public void setDay(long day) {
-<span class="fc" id="L49">        this.day = day;</span>
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L119">        this.day = day;</span>
+<span class="fc" id="L120">    }</span>
 
+    /**
+     * Gets hour.
+     *
+     * @return the hour
+     */
     public long getHour() {
-<span class="fc" id="L53">        return hour;</span>
+<span class="fc" id="L128">        return hour;</span>
     }
 
+    /**
+     * Sets hour.
+     *
+     * @param hour the hour
+     */
     public void setHour(long hour) {
-<span class="fc" id="L57">        this.hour = hour;</span>
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L137">        this.hour = hour;</span>
+<span class="fc" id="L138">    }</span>
 
+    /**
+     * Gets minute.
+     *
+     * @return the minute
+     */
     public long getMinute() {
-<span class="fc" id="L61">        return minute;</span>
+<span class="fc" id="L146">        return minute;</span>
     }
 
+    /**
+     * Sets minute.
+     *
+     * @param minute the minute
+     */
     public void setMinute(long minute) {
-<span class="fc" id="L65">        this.minute = minute;</span>
-<span class="fc" id="L66">    }</span>
+<span class="fc" id="L155">        this.minute = minute;</span>
+<span class="fc" id="L156">    }</span>
 
-    public long getSeconde() {
-<span class="nc" id="L69">        return seconde;</span>
-    }
-
-    public void setSeconde(long seconde) {
-<span class="fc" id="L73">        this.seconde = seconde;</span>
-<span class="fc" id="L74">    }</span>
+    /**
+     * Difference with free time.
+     *
+     * @param inTime  the in time
+     * @param outTime the out time
+     */
+    public void differenceWithFreeTime(LocalDateTime inTime, LocalDateTime outTime) {
+<span class="fc" id="L165">        this.differenceInTime = outTime.toInstant(ZoneOffset.UTC).toEpochMilli()</span>
+<span class="fc" id="L166">                - inTime.toInstant(ZoneOffset.UTC).toEpochMilli();</span>
+<span class="fc" id="L167">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
