@@ -57,6 +57,7 @@ public class ParkingServiceTest {
             Ticket ticket = new Ticket();
             ticket.setInTime(LocalDateTime.now().minusHours(1));
             ticket.setParkingSpot(parkingSpot);
+            ticket.setRecurringCustomer(true);
             ticket.setVehicleRegNumber("ABCDEF");
             when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
             when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Fare.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.constants</a> &gt; <span class="el_source">Fare.java</span></div><h1>Fare.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.constants;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Fare.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.constants</a> &gt; <span class="el_source">Fare.java</span></div><h1>Fare.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.constants;
 
-/**
+/**éa
  * The enum Fare.
  */
 <span class="fc" id="L6">public enum Fare {</span>
@@ -8,20 +8,44 @@
     /**
      * Free parking time in minute fare.
      */
-<span class="fc" id="L11">    FREE_PARKING_TIME_IN_MINUTE (30),</span>
+<span class="fc" id="L11">    FREE_PARKING_TIME_IN_MINUTE(30),</span>
     /**
      * Recurring user discount fare.
      */
-<span class="fc" id="L15">    RECURRING_USER_DISCOUNT (0.05),</span>
+<span class="fc" id="L15">    RECURRING_USER_DISCOUNT(0.05),</span>
     /**
      * Car rate per hour fare.
      */
-<span class="fc" id="L19">    CAR_RATE_PER_HOUR (1.5),</span>
+<span class="fc" id="L19">    CAR_RATE_PER_HOUR(1.5),</span>
     /**
      * Bike rate per hour fare.
      */
-<span class="fc" id="L23">    BIKE_RATE_PER_HOUR (1.0);</span>
+<span class="fc" id="L23">    BIKE_RATE_PER_HOUR(1.0);</span>
 
+    /**
+     * The constant CAR_RATE_PER_DAY.
+     */
+<span class="fc" id="L28">    public static final double CAR_RATE_PER_DAY = 24 * CAR_RATE_PER_HOUR.value;</span>
+    /**
+     * The constant CAR_RATE_PER_MONTH.
+     */
+<span class="fc" id="L32">    public static final double CAR_RATE_PER_MONTH = 30 * 24 * CAR_RATE_PER_HOUR.value;</span>
+    /**
+     * The constant CAR_RATE_PER_MINUTE.
+     */
+<span class="fc" id="L36">    public static final double CAR_RATE_PER_MINUTE = CAR_RATE_PER_HOUR.value / 60;</span>
+    /**
+     * The constant BIKE_RATE_PER_DAY.
+     */
+<span class="fc" id="L40">    public static final double BIKE_RATE_PER_DAY = 24 * BIKE_RATE_PER_HOUR.value;</span>
+    /**
+     * The constant BIKE_RATE_PER_MONTH.
+     */
+<span class="fc" id="L44">    public static final double BIKE_RATE_PER_MONTH = 30.41666666 * 24 * BIKE_RATE_PER_HOUR.value;</span>
+    /**
+     * The constant BIKE_RATE_PER_MINUTE.
+     */
+<span class="fc" id="L48">    public static final double BIKE_RATE_PER_MINUTE = BIKE_RATE_PER_HOUR.value / 60;</span>
     /**
      * The Value.
      */
@@ -32,9 +56,9 @@
      *
      * @param value the value
      */
-<span class="fc" id="L35">    Fare(double value) {</span>
-<span class="fc" id="L36">        this.value = value;</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L59">    Fare(double value) {</span>
+<span class="fc" id="L60">        this.value = value;</span>
+<span class="fc" id="L61">    }</span>
 
     /**
      * Gets value.
@@ -42,43 +66,8 @@
      * @return the value
      */
     public double getValue() {
-<span class="fc" id="L45">        return value;</span>
+<span class="fc" id="L69">        return value;</span>
     }
-
-    /**
-     * Sets value.
-     *
-     * @param value the value
-     */
-    public void setValue(double value) {
-<span class="nc" id="L54">        this.value = value;</span>
-<span class="nc" id="L55">    }</span>
-
-    /**
-     * The constant CAR_RATE_PER_DAY.
-     */
-<span class="fc" id="L60">    public static final double CAR_RATE_PER_DAY = 24 * CAR_RATE_PER_HOUR.value;</span>
-    /**
-     * The constant CAR_RATE_PER_MONTH.
-     */
-<span class="fc" id="L64">    public static final double CAR_RATE_PER_MONTH = 30 * 24 * CAR_RATE_PER_HOUR.value;</span>
-    /**
-     * The constant CAR_RATE_PER_MINUTE.
-     */
-<span class="fc" id="L68">    public static final double CAR_RATE_PER_MINUTE = CAR_RATE_PER_HOUR.value / 60;</span>
-
-    /**
-     * The constant BIKE_RATE_PER_DAY.
-     */
-<span class="fc" id="L73">    public static final double BIKE_RATE_PER_DAY = 24 * BIKE_RATE_PER_HOUR.value;</span>
-    /**
-     * The constant BIKE_RATE_PER_MONTH.
-     */
-<span class="fc" id="L77">    public static final double BIKE_RATE_PER_MONTH = 30.41666666 * 24 * BIKE_RATE_PER_HOUR.value;</span>
-    /**
-     * The constant BIKE_RATE_PER_MINUTE.
-     */
-<span class="fc" id="L81">    public static final double BIKE_RATE_PER_MINUTE = BIKE_RATE_PER_HOUR.value / 60;</span>
 
     //    public static final long FREE_PARKING_TIME_IN_MINUTE = 30;
 //

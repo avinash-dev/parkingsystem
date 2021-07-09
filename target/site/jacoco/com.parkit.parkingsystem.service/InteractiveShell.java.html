@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InteractiveShell.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.service</a> &gt; <span class="el_source">InteractiveShell.java</span></div><h1>InteractiveShell.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.service;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InteractiveShell.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.service</a> &gt; <span class="el_source">InteractiveShell.java</span></div><h1>InteractiveShell.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.service;
 
 import com.parkit.parkingsystem.dao.ParkingSpotDAO;
 import com.parkit.parkingsystem.dao.TicketDAO;
@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger;
     /**
      * Load interface.
      */
-    public static void loadInterface(){
+    public static void loadInterface() {
 <span class="nc" id="L23">        logger.info(&quot;App initialized!!!&quot;);</span>
 <span class="nc" id="L24">        System.out.println(&quot;Welcome to Parking System!&quot;);</span>
 
@@ -46,20 +46,21 @@ import org.apache.logging.log4j.Logger;
 <span class="nc" id="L46">                    continueApp = false;</span>
 <span class="nc" id="L47">                    break;</span>
                 }
-<span class="nc" id="L49">                default: System.out.println(&quot;Unsupported option. Please enter a number corresponding to the provided menu&quot;);</span>
+                default:
+<span class="nc" id="L50">                    System.out.println(&quot;Unsupported option. Please enter a number corresponding to the provided menu&quot;);</span>
             }
-<span class="nc" id="L51">        }</span>
-<span class="nc" id="L52">    }</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">    }</span>
 
     /**
      * Load menu.
      */
-    private static void loadMenu(){
-<span class="nc" id="L58">        System.out.println(&quot;Please select an option. Simply enter the number to choose an action&quot;);</span>
-<span class="nc" id="L59">        System.out.println(&quot;1 New Vehicle Entering - Allocate Parking Space&quot;);</span>
-<span class="nc" id="L60">        System.out.println(&quot;2 Vehicle Exiting - Generate Ticket Price&quot;);</span>
-<span class="nc" id="L61">        System.out.println(&quot;3 Shutdown System&quot;);</span>
-<span class="nc" id="L62">    }</span>
+    private static void loadMenu() {
+<span class="nc" id="L59">        System.out.println(&quot;Please select an option. Simply enter the number to choose an action&quot;);</span>
+<span class="nc" id="L60">        System.out.println(&quot;1 New Vehicle Entering - Allocate Parking Space&quot;);</span>
+<span class="nc" id="L61">        System.out.println(&quot;2 Vehicle Exiting - Generate Ticket Price&quot;);</span>
+<span class="nc" id="L62">        System.out.println(&quot;3 Shutdown System&quot;);</span>
+<span class="nc" id="L63">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

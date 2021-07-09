@@ -13,11 +13,18 @@ public class InputReaderUtil {
     /**
      * The constant scan.
      */
-    private static final Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
     /**
      * The constant logger.
      */
     private static final Logger logger = LogManager.getLogger("InputReaderUtil");
+
+    public InputReaderUtil() {
+    }
+
+    public InputReaderUtil(Scanner scanner) {
+        InputReaderUtil.scan = scanner;
+    }
 
     /**
      * Read selection int.

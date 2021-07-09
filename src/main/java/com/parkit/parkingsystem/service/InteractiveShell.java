@@ -32,7 +32,7 @@ public class InteractiveShell {
         while (continueApp) {
             loadMenu();
             int option = inputReaderUtil.readSelection();
-            switch(option){
+            switch (option) {
                 case 1: {
                     parkingService.processIncomingVehicle();
                     break;

@@ -1,6 +1,7 @@
 package com.parkit.parkingsystem.constants;
 
 /**
+ * éa
  * The enum Fare.
  */
 public enum Fare {
@@ -42,14 +43,14 @@ public enum Fare {
      * The constant BIKE_RATE_PER_MONTH.
      */
     public static final double BIKE_RATE_PER_MONTH = 30.41666666 * 24 * BIKE_RATE_PER_HOUR.value;
-    /**
-     * The constant BIKE_RATE_PER_MINUTE.
-     */
-    public static final double BIKE_RATE_PER_MINUTE = BIKE_RATE_PER_HOUR.value / 60;
-    /**
-     * The Value.
-     */
-    private double value;
+	/**
+	 * The constant BIKE_RATE_PER_MINUTE.
+	 */
+	public static final double BIKE_RATE_PER_MINUTE = BIKE_RATE_PER_HOUR.value / 60;
+	/**
+	 * The Value.
+	 */
+	private final double value;
 
     /**
      * Instantiates a new Fare.
@@ -67,15 +68,6 @@ public enum Fare {
      */
     public double getValue() {
         return value;
-    }
-
-    /**
-     * Sets value.
-     *
-     * @param value the value
-     */
-    public void setValue(double value) {
-        this.value = value;
     }
 
     //    public static final long FREE_PARKING_TIME_IN_MINUTE = 30;

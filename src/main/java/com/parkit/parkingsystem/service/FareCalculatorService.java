@@ -20,12 +20,6 @@ public class FareCalculatorService {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().isBefore(ticket.getInTime()))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + Objects.requireNonNull(ticket.getOutTime()));
         }
-        // False, we need all the intel : date and time exactly
-//        int inHour = ticket.getInTime().getHours();
-//        int outHour = ticket.getOutTime().getHours();
-//        //TODO: Some tests are failing here. Need to check if this logic is correct
-//        int duration = outHour - inHour;
-
 
         DurationCalculatorService durationCalculatorService = new DurationCalculatorService();
         Duration duration = durationCalculatorService.calculateDifference_WithFreeTime(ticket.getInTime(), ticket.getOutTime());

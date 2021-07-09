@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DBConstants.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.constants</a> &gt; <span class="el_source">DBConstants.java</span></div><h1>DBConstants.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.constants;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DBConstants.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.constants</a> &gt; <span class="el_source">DBConstants.java</span></div><h1>DBConstants.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.constants;
 
 /**
  * The enum Db constants.
@@ -8,41 +8,41 @@
     /**
      * The Get next parking spot.
      */
-<span class="fc" id="L11">    GET_NEXT_PARKING_SPOT (&quot;select min(PARKING_NUMBER) from parking where AVAILABLE = true and TYPE = ?&quot;),</span>
+<span class="fc" id="L11">    GET_NEXT_PARKING_SPOT(&quot;select min(PARKING_NUMBER) from parking where AVAILABLE = true and TYPE = ?&quot;),</span>
     /**
      * The Update parking spot.
      */
-<span class="fc" id="L15">    UPDATE_PARKING_SPOT (&quot;update parking set available = ? where PARKING_NUMBER = ?&quot;),</span>
+<span class="fc" id="L15">    UPDATE_PARKING_SPOT(&quot;update parking set available = ? where PARKING_NUMBER = ?&quot;),</span>
     /**
      * The Check if recurring customer.
      */
-<span class="fc" id="L19">    CHECK_IF_RECURRING_CUSTOMER (&quot;SELECT test.ticket.VEHICLE_REG_NUMBER FROM test.ticket WHERE VEHICLE_REG_NUMBER = ? LIMIT 2&quot;),</span>
+<span class="fc" id="L19">    CHECK_IF_RECURRING_CUSTOMER(&quot;SELECT test.ticket.VEHICLE_REG_NUMBER FROM test.ticket WHERE VEHICLE_REG_NUMBER = ? LIMIT 2&quot;),</span>
     /**
      * The Save ticket.
      */
-<span class="fc" id="L23">    SAVE_TICKET (&quot;insert into ticket(PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME) values(?,?,?,?,?)&quot;),</span>
+<span class="fc" id="L23">    SAVE_TICKET(&quot;insert into ticket(PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME) values(?,?,?,?,?)&quot;),</span>
     /**
      * The Update ticket.
      */
-<span class="fc" id="L27">    UPDATE_TICKET (&quot;update ticket set PRICE=?, OUT_TIME=? where ID=?&quot;),</span>
+<span class="fc" id="L27">    UPDATE_TICKET(&quot;update ticket set PRICE=?, OUT_TIME=? where ID=?&quot;),</span>
     /**
      * The Get ticket.
      */
-<span class="fc" id="L31">    GET_TICKET (&quot;select t.PARKING_NUMBER, t.ID, t.PRICE, t.IN_TIME, t.OUT_TIME, p.TYPE from ticket t,parking p where p.parking_number = t.parking_number and t.VEHICLE_REG_NUMBER=? order by t.IN_TIME  limit 1&quot;);</span>
+<span class="fc" id="L31">    GET_TICKET(&quot;select t.PARKING_NUMBER, t.ID, t.PRICE, t.IN_TIME, t.OUT_TIME, p.TYPE from ticket t,parking p where p.parking_number = t.parking_number and t.VEHICLE_REG_NUMBER=? order by t.IN_TIME  limit 1&quot;);</span>
+
+    /**
+     * The Sql message.
+     */
+    private final String SQLMessage;
 
     /**
      * Instantiates a new Db constants.
      *
      * @param SQLMessage the sql message
      */
-<span class="fc" id="L38">    DBConstants(String SQLMessage) {</span>
-<span class="fc" id="L39">        this.SQLMessage = SQLMessage;</span>
-<span class="fc" id="L40">    }</span>
-
-    /**
-     * The Sql message.
-     */
-    private final String SQLMessage;
+<span class="fc" id="L43">    DBConstants(String SQLMessage) {</span>
+<span class="fc" id="L44">        this.SQLMessage = SQLMessage;</span>
+<span class="fc" id="L45">    }</span>
 
     /**
      * Gets sql message.
