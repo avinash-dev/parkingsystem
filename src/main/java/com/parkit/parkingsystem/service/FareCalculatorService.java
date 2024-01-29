@@ -11,7 +11,7 @@ public class FareCalculatorService {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime());
         }
         //Calculate the arrival time in milliseconds
-        long inTimeMillis = ticket.getInTime().getTime();
+        long inTimeMillis = ticket.getInTime().getTime();//changing int for long, getHours for getTime
 
         //Calculate the exit time in milliseconds.
         long outTimeMillis = ticket.getOutTime().getTime();
@@ -28,6 +28,8 @@ public class FareCalculatorService {
             ticket.setPrice(0.0);
         } else {
             //otherwise, convert the minutes to hours
+            // The line `double additionalHours = durationInMinutes / 60.0;` is calculating the
+            // additional hours of parking based on the duration in minutes.
             double additionalHours = durationInMinutes / 60.0;
             switch (ticket.getParkingSpot().getParkingType()) {
                 //According to type of vehicle, multiply the hours by the rate

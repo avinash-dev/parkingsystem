@@ -11,7 +11,7 @@ import com.parkit.parkingsystem.model.Ticket;
 <span class="fc" id="L11">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot; + ticket.getOutTime());</span>
         }
         //Calculate the arrival time in milliseconds
-<span class="fc" id="L14">        long inTimeMillis = ticket.getInTime().getTime();</span>
+<span class="fc" id="L14">        long inTimeMillis = ticket.getInTime().getTime();//changing int for long, getHours for getTime</span>
 
         //Calculate the exit time in milliseconds.
 <span class="fc" id="L17">        long outTimeMillis = ticket.getOutTime().getTime();</span>
@@ -28,20 +28,22 @@ import com.parkit.parkingsystem.model.Ticket;
 <span class="fc" id="L28">            ticket.setPrice(0.0);</span>
 <span class="fc" id="L29">        } else {</span>
             //otherwise, convert the minutes to hours
-<span class="fc" id="L31">            double additionalHours = durationInMinutes / 60.0;</span>
-<span class="pc bpc" id="L32" title="1 of 3 branches missed.">            switch (ticket.getParkingSpot().getParkingType()) {</span>
+            // The line `double additionalHours = durationInMinutes / 60.0;` is calculating the
+            // additional hours of parking based on the duration in minutes.
+<span class="fc" id="L33">            double additionalHours = durationInMinutes / 60.0;</span>
+<span class="pc bpc" id="L34" title="1 of 3 branches missed.">            switch (ticket.getParkingSpot().getParkingType()) {</span>
                 //According to type of vehicle, multiply the hours by the rate
                 case CAR:
-<span class="fc" id="L35">                    ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR);</span>
-<span class="fc" id="L36">                    break;</span>
+<span class="fc" id="L37">                    ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR);</span>
+<span class="fc" id="L38">                    break;</span>
                 case BIKE:
-<span class="fc" id="L38">                    ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR);</span>
-<span class="fc" id="L39">                    break;</span>
+<span class="fc" id="L40">                    ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR);</span>
+<span class="fc" id="L41">                    break;</span>
                 default:
-<span class="nc" id="L41">                    throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
+<span class="nc" id="L43">                    throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
             }
         }
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L46">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
