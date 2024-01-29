@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InteractiveShell.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.service</a> &gt; <span class="el_source">InteractiveShell.java</span></div><h1>InteractiveShell.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.service;
+
+import com.parkit.parkingsystem.dao.ParkingSpotDAO;
+import com.parkit.parkingsystem.dao.TicketDAO;
+import com.parkit.parkingsystem.util.InputReaderUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+<span class="nc" id="L9">public class InteractiveShell {</span>
+
+<span class="nc" id="L11">    private static final Logger logger = LogManager.getLogger(&quot;InteractiveShell&quot;);</span>
+
+    public static void loadInterface(){
+<span class="nc" id="L14">        logger.info(&quot;App initialized!!!&quot;);</span>
+<span class="nc" id="L15">        System.out.println(&quot;Welcome to Parking System!&quot;);</span>
+
+<span class="nc" id="L17">        boolean continueApp = true;</span>
+<span class="nc" id="L18">        InputReaderUtil inputReaderUtil = new InputReaderUtil();</span>
+<span class="nc" id="L19">        ParkingSpotDAO parkingSpotDAO = new ParkingSpotDAO();</span>
+<span class="nc" id="L20">        TicketDAO ticketDAO = new TicketDAO();</span>
+<span class="nc" id="L21">        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);</span>
+
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        while(continueApp){</span>
+<span class="nc" id="L24">            loadMenu();</span>
+<span class="nc" id="L25">            int option = inputReaderUtil.readSelection();</span>
+<span class="nc bnc" id="L26" title="All 4 branches missed.">            switch(option){</span>
+                case 1: {
+<span class="nc" id="L28">                    parkingService.processIncomingVehicle();</span>
+<span class="nc" id="L29">                    break;</span>
+                }
+                case 2: {
+<span class="nc" id="L32">                    parkingService.processExitingVehicle();</span>
+<span class="nc" id="L33">                    break;</span>
+                }
+                case 3: {
+<span class="nc" id="L36">                    System.out.println(&quot;Exiting from the system!&quot;);</span>
+<span class="nc" id="L37">                    continueApp = false;</span>
+<span class="nc" id="L38">                    break;</span>
+                }
+<span class="nc" id="L40">                default: System.out.println(&quot;Unsupported option. Please enter a number corresponding to the provided menu&quot;);</span>
+            }
+<span class="nc" id="L42">        }</span>
+<span class="nc" id="L43">    }</span>
+
+    private static void loadMenu(){
+<span class="nc" id="L46">        System.out.println(&quot;Please select an option. Simply enter the number to choose an action&quot;);</span>
+<span class="nc" id="L47">        System.out.println(&quot;1 New Vehicle Entering - Allocate Parking Space&quot;);</span>
+<span class="nc" id="L48">        System.out.println(&quot;2 Vehicle Exiting - Generate Ticket Price&quot;);</span>
+<span class="nc" id="L49">        System.out.println(&quot;3 Shutdown System&quot;);</span>
+<span class="nc" id="L50">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
