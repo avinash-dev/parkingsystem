@@ -86,4 +86,79 @@ public class TicketDAO {
         }
         return false;
     }
+
+    public int getNbTicket(String vehicleRegNumber) {
+        Connection con = null;
+        int numberOfTickets = 0;
+        try {
+            con = dataBaseConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(DBConstants.GET_NB_TICKET);
+            ps.setString(1, vehicleRegNumber);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                numberOfTickets = rs.getInt(1);
+            }
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+        } catch (Exception ex) {
+            logger.error("Error fetching the number of tickets for a vehicle", ex);
+        } finally {
+            dataBaseConfig.closeConnection(con);
+            return numberOfTickets;
+        }
+    }
+
+    public void giveDiscountToRecurringVehicles(String vehicleRegNumber) {
+        int numberOfTickets = getNbTicket(vehicleRegNumber);
+        if (numberOfTickets > 1) {
+            Ticket latestTicket = getLatestTicketForVehicle(vehicleRegNumber);
+            if (latestTicket != null) {
+                latestTicket.setDiscount(true);
+                updateTicket(latestTicket);
+            }
+        }
+    }
+
+    private Ticket getLatestTicketForVehicle(String vehicleRegNumber) {
+        Connection con = null;
+        Ticket ticket = null;
+        try {
+            con = dataBaseConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(DBConstants.GET_LATEST_// In the
+            // `getLatestTicketForVehicle`
+            // method,
+            // `TICKET_FOR_VEHICLE`
+            // is a SQL query
+            // defined in the
+            // `DBConstants` class.
+            // It is used to
+            // retrieve the latest
+            // ticket for a specific
+            // vehicle registration
+            // number from the
+            // database.
+            TICKET_FOR_VEHICLE);
+            ps.setString(1, vehicleRegNumber);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                ticket = new Ticket();
+                ParkingSpot parkingSpot = new ParkingSpot(rs.getInt(1), ParkingType.valueOf(rs.getString(6)), false);
+                ticket.setParkingSpot(parkingSpot);
+                ticket.setId(rs.getInt(2));
+                ticket.setVehicleRegNumber(vehicleRegNumber);
+                ticket.setPrice(rs.getDouble(3));
+                ticket.setInTime(rs.getTimestamp(4));
+                ticket.setOutTime(rs.getTimestamp(5));
+            }
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+        } catch (Exception ex) {
+            logger.error("Error fetching the latest ticket for a vehicle", ex);
+        } finally {
+            dataBaseConfig.closeConnection(con);
+            return ticket;
+        }
+    }
+
 }
+
