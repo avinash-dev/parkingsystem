@@ -198,4 +198,31 @@ public class FareCalculatorServiceTest {
         assertEquals( (24 * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
         ////24 because there are 24 hours in a day multiplied by the car price or rate"
     }
+
+    @Test
+    // Test to verify that a vehicle with a discount ticket pays 95% of the total price.
+    public void calculateFareWithDiscount() {
+        // Current date and time
+        Date inTime = new Date();
+        
+        // Simulate the vehicle being parked for 2 hours
+        inTime.setTime(System.currentTimeMillis() - (2 * 60 * 60 * 1000));
+        Date outTime = new Date();
+
+        // Create a ticket with vehicle type and marked as discount
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, true);
+        Ticket ticket = new Ticket();
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+
+        // Calculate the fare with discount
+        fareCalculatorService.calculateFare(ticket);
+
+        // Calculate 95% of the expected total price
+        double expectedPrice = 0.95 * Fare.CAR_RATE_PER_HOUR * 2;
+
+        // Verify that the calculated price is equal to 95% of the expected total price
+        assertEquals(expectedPrice, ticket.getPrice());
+    }
 }
