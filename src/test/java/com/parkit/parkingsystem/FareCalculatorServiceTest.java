@@ -100,7 +100,7 @@ public class FareCalculatorServiceTest {
     }
 
     @Test
-    //est for a motorcycle when it parks for less than an hour but more than 30 minutes
+    //Test for a motorcycle when it parks for less than an hour but more than 30 minutes
     public void calculateFareBikeWithLessThanOneHourParkingTime(){
         Date inTime = new Date();
         //45 minutes*60 seconds*1000 miliseconds
@@ -205,8 +205,8 @@ public class FareCalculatorServiceTest {
         // Current date and time
         Date inTime = new Date();
         
-        // Simulate the vehicle being parked for 2 hours
-        inTime.setTime(System.currentTimeMillis() - (2 * 60 * 60 * 1000));
+        // Simulate the vehicle being parked for 1 hours
+        inTime.setTime(System.currentTimeMillis() - (1 * 60 * 60 * 1000));
         Date outTime = new Date();
 
         // Create a ticket with vehicle type and marked as discount
@@ -217,13 +217,11 @@ public class FareCalculatorServiceTest {
         ticket.setParkingSpot(parkingSpot);
 
         // Calculate the fare with discount
-        fareCalculatorService.calculateFare(ticket);
+        fareCalculatorService.calculateFare(ticket, true);
 
-        // Calculate 95% of the expected total price
-        double expectedPrice = 0.95 * Fare.CAR_RATE_PER_HOUR * 2;
 
         // Verify that the calculated price is equal to 95% of the expected total price
-        assertEquals(expectedPrice, ticket.getPrice());
+        assertEquals(0.95 * Fare.CAR_RATE_PER_HOUR, ticket.getPrice());
     }
 
     @Test
@@ -244,12 +242,10 @@ public class FareCalculatorServiceTest {
         ticket.setParkingSpot(parkingSpot);
 
         // Calculate the fare with discount
-        fareCalculatorService.calculateFare(ticket);
+        fareCalculatorService.calculateFare(ticket, true);
 
-        // Calculate 95% of the expected total price for a bike
-        double expectedPrice = 0.95 * Fare.BIKE_RATE_PER_HOUR;
 
         // Verify that the calculated price is equal to 95% of the expected total price
-        assertEquals(expectedPrice, ticket.getPrice());
+        assertEquals(0.95*Fare.BIKE_RATE_PER_HOUR, ticket.getPrice());
     }
 }

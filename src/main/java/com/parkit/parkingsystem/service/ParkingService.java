@@ -43,8 +43,6 @@ public class ParkingService {
                 ticket.setInTime(inTime);
                 ticket.setOutTime(null);
 
-                // New logic to give a 5% discount to recurring vehicles
-                ticketDAO.giveDiscountToRecurringVehicles(vehicleRegNumber);
 
                 ticketDAO.saveTicket(ticket);
                 System.out.println("Generated Ticket and saved in DB");
@@ -52,9 +50,14 @@ public class ParkingService {
                 System.out.println("Recorded in-time for vehicle number:" + vehicleRegNumber + " is:" + inTime);
 
                 // Display welcome message for recurring users with a discount
-                if (ticket.isDiscount()) {
+                if (ticketDAO.getNbTicket(vehicleRegNumber)>0) {
                     System.out.println("Glad to see you again! As a regular user of our parking lot, you will obtain a 5% discount.");
+                    fareCalculatorService.calculateFare(ticket, true);
                 }
+                else{
+                    fareCalculatorService.calculateFare(ticket);
+                }
+
             }
         } catch (Exception e) {
             logger.error("Unable to process incoming vehicle", e);
@@ -118,6 +121,7 @@ public class ParkingService {
                 parkingSpotDAO.updateParking(parkingSpot);
                 System.out.println("Please pay the parking fare:" + ticket.getPrice());
                 System.out.println("Recorded out-time for vehicle number:" + ticket.getVehicleRegNumber() + " is:" + outTime);
+
             } else {
                 System.out.println("Unable to update ticket information. An error occurred");
             }

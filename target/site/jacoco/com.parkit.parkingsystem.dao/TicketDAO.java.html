@@ -34,7 +34,7 @@ import java.sql.Timestamp;
 <span class="nc" id="L34">            return ps.execute();</span>
 <span class="nc" id="L35">        }catch (Exception ex){</span>
 <span class="nc" id="L36">            logger.error(&quot;Error fetching next available slot&quot;,ex);</span>
-        }finally {
+<span class="nc" id="L37">        }finally {</span>
 <span class="nc" id="L38">            dataBaseConfig.closeConnection(con);</span>
 <span class="nc" id="L39">            return false;</span>
         }
@@ -63,7 +63,7 @@ import java.sql.Timestamp;
 <span class="nc" id="L63">            dataBaseConfig.closePreparedStatement(ps);</span>
 <span class="nc" id="L64">        }catch (Exception ex){</span>
 <span class="nc" id="L65">            logger.error(&quot;Error fetching next available slot&quot;,ex);</span>
-        }finally {
+<span class="nc" id="L66">        }finally {</span>
 <span class="nc" id="L67">            dataBaseConfig.closeConnection(con);</span>
 <span class="nc" id="L68">            return ticket;</span>
         }
@@ -86,5 +86,51 @@ import java.sql.Timestamp;
         }
 <span class="nc" id="L87">        return false;</span>
     }
+
+    // MLO New method to get the number of tickets for a specific vehicle
+    //This method returns an integer representing the number of tickets for a specific vehicle
+    // identified by its registration number.
+
+    public int getNbTicket(String vehicleRegNumber) {
+    //local variables 
+        //Connection con = null;: Declares a Connection object and initializes it to null.
+        // This will be used to establish a connection to the database.
+<span class="nc" id="L98">        Connection con = null;</span>
+        //int numberOfTickets = 0;: Initializes an integer variable to zero, 
+        //which will store the count of tickets for the specified vehicle.
+<span class="nc" id="L101">        int numberOfTickets = 0;</span>
+        //try block
+        try {
+        //con = dataBaseConfig.getConnection();: Attempts to establish a 
+        //connection to the database using the dataBaseConfig object.
+<span class="nc" id="L106">            con = dataBaseConfig.getConnection();</span>
+            // Creates a PreparedStatement object ps using the SQL query defined in DBConstants.GET_NB_TICKET
+<span class="nc" id="L108">            PreparedStatement ps = con.prepareStatement(DBConstants.GET_NB_TICKET);//This query is expected to return the count of tickets for a specific vehicle.</span>
+            //Sets the parameter in the SQL query to the provided vehicleRegNumber. 
+            //This ensures that the query retrieves information for the specified vehicle.
+<span class="nc" id="L111">            ps.setString(1, vehicleRegNumber);</span>
+            //Executes the SQL query and retrieves the result set, 
+            //which contains the count of tickets for the specified vehicle.
+<span class="nc" id="L114">            ResultSet rs = ps.executeQuery();</span>
+            //Checks if the result set has at least one row (i.e., if there is data). 
+            //If true, it retrieves the count from the first column of the result set and assigns it 
+            //to the numberOfTickets variable.
+<span class="nc bnc" id="L118" title="All 2 branches missed.">            if (rs.next()) {</span>
+<span class="nc" id="L119">                numberOfTickets = rs.getInt(1);</span>
+            }
+            //dataBaseConfig.closeResultSet(rs); and dataBaseConfig.closePreparedStatement(ps);: 
+            //Closes the ResultSet and PreparedStatement to free up resources.
+<span class="nc" id="L123">            dataBaseConfig.closeResultSet(rs);</span>
+<span class="nc" id="L124">            dataBaseConfig.closePreparedStatement(ps);</span>
+<span class="nc" id="L125">        } catch (Exception ex) {</span>
+<span class="nc" id="L126">            logger.error(&quot;Error fetching the number of tickets for a vehicle&quot;, ex);</span>
+<span class="nc" id="L127">        } finally {</span>
+            //Ensures that the database connection is closed, regardless of whether an exception occurred or not.
+            // It then returns the numberOfTickets variable, which contains the count of tickets for the specified vehicle.
+<span class="nc" id="L130">            dataBaseConfig.closeConnection(con);</span>
+<span class="nc" id="L131">            return numberOfTickets;</span>
+        }
+    }
 }
+
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
