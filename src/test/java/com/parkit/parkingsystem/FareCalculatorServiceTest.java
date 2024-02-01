@@ -198,29 +198,42 @@ public class FareCalculatorServiceTest {
         assertEquals( (24 * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
         ////24 because there are 24 hours in a day multiplied by the car price or rate"
     }
-
-    @Test
+    //!!!!!!!!!!STEP 4 DEVELOP FUNTCTION 5% DISCOUNT!!!!!!!!!!!!
+    @Test //Il s'agit d'une annotation de JUnit indiquant que la méthode suivante est un cas de test.
     // Test to verify that a vehicle with a discount ticket pays 95% of the total price.
-    public void calculateFareCarWithDiscount() {
-        // Current date and time
+    public void calculateFareCarWithDiscount() {//Définit une méthode publique appelée 
+        //calculateFareCarWithDiscount qui sera exécutée en tant que partie de la suite de tests.
+        // Current date and time Crée un objet Date appelé inTime qui représente l'instant actuel.
         Date inTime = new Date();
         
         // Simulate the vehicle being parked for 1 hours
+        //Définit l'heure de l'objet inTime pour simuler que le véhicule est resté garé pendant 1 heure (en millisecondes).
         inTime.setTime(System.currentTimeMillis() - (1 * 60 * 60 * 1000));
+        //Crée un autre objet Date appelé outTime qui représente l'instant actuel.
         Date outTime = new Date();
 
         // Create a ticket with vehicle type and marked as discount
+        //Crée un objet ParkingSpot avec le numéro d'identification 1, le type de véhicule CAR et marqué
+        // comme réduction (true).
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, true);
+        //Crée un objet Ticket.
         Ticket ticket = new Ticket();
+        //Définit l'heure d'entrée du billet avec la valeur de inTime.
         ticket.setInTime(inTime);
+        //Définit l'heure de sortie du billet avec la valeur de outTime.
         ticket.setOutTime(outTime);
+        //Définit l'emplacement de stationnement du billet avec l'objet parkingSpot créé précédemment.
         ticket.setParkingSpot(parkingSpot);
 
         // Calculate the fare with discount
+        //Appelle la méthode calculateFare de l'objet fareCalculatorService en passant le billet et 
+        //en indiquant qu'il bénéficie d'une réduction (true).
         fareCalculatorService.calculateFare(ticket, true);
 
 
         // Verify that the calculated price is equal to 95% of the expected total price
+        //Utilise la méthode assertEquals de JUnit pour vérifier que le prix calculé du billet est égal à 95 %
+        // du prix total attendu pour un véhicule CAR par heure.
         assertEquals(0.95 * Fare.CAR_RATE_PER_HOUR, ticket.getPrice());
     }
 
