@@ -1,16 +1,24 @@
+//Cela définit le package auquel appartient la classe FareCalculatorService.
 package com.parkit.parkingsystem.service;
-
+//Importe la classe Fare depuis le package com.parkit.parkingsystem.constants. 
+//Cette classe contient probablement des constantes liées aux tarifs de stationnement.
 import com.parkit.parkingsystem.constants.Fare;
+//Importe la classe Ticket depuis le package com.parkit.parkingsystem.model. 
+//Cette classe représente probablement un billet de stationnement.
 import com.parkit.parkingsystem.model.Ticket;
 
 public class FareCalculatorService {
 
-
+    //Surcharge de la méthode calculateFare. Appelle la deuxième méthode calculateFare 
+    //avec false pour le rabais.
     public void calculateFare(Ticket ticket) {
         calculateFare(ticket,false);}
-    // Verify that the exit time is valid & later than the entry time
+    //Débute la méthode calculateFare qui prend un objet Ticket et un booléen discount 
+    //indiquant si un rabais est appliqué.
     public void calculateFare(Ticket ticket, boolean discount) {
         // Verify that the exit time is valid & later than the entry time
+        //Vérifie si l'heure de sortie (outTime) est valide et postérieure à l'heure d'entrée
+        // (inTime). Sinon, une exception est levée.
         if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime());
         }
@@ -34,9 +42,19 @@ public class FareCalculatorService {
             // Convert the minutes to hours
             double additionalHours = durationInMinutes / 60.0;
 
-                // Calculate the regular fare based on the type of vehicle
-            switch (ticket.getParkingSpot().getParkingType()) {
+            // Calculate the regular fare based on the type of vehicle
+            //Utilise une structure switch pour calculer le prix en fonction du type de véhicule.
+            //pour déterminer le type de stationnement du véhicule associé à un billet (ticket).
+            // En fonction du type de stationnement, il calcule le prix du stationnement 
+            //en considérant la durée de stationnement (additionalHours) et le taux horaire
+            // spécifique au type de véhicule. Si un rabais est appliqué (discount est vrai), 
+            //le prix est réduit de 5%.
+            switch (ticket.getParkingSpot().getParkingType()) {//Commence la déclaration switch qui évalue le type de stationnement associé au billet.
                 case CAR:
+                //Si le rabais est appliqué (discount est vrai), le prix est calculé 
+                //en réduisant le taux horaire de 5%. Sinon, le prix est calculé en utilisant
+                //le taux horaire standard. Le résultat est ensuite défini comme 
+                //le prix du billet.
                     if(discount){
                         ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR * (1 - 0.05));}
                     else{
@@ -50,6 +68,8 @@ public class FareCalculatorService {
                         ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR);
                     }
                     break;
+                //Si le type de stationnement n'est ni CAR ni BIKE, une exception de type 
+                //IllegalArgumentException est lancée avec le message "Unknown Parking Type".
                 default:
                     throw new IllegalArgumentException("Unknown Parking Type");
                 }
