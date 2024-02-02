@@ -1,4 +1,19 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.ParkingServiceTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.677 s - in com.parkit.parkingsystem.ParkingServiceTest
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.527 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
+processIncomingVehicle  Time elapsed: 0.034 s  <<< ERROR!
+org.mockito.exceptions.misusing.WrongTypeOfReturnValue: 
+
+ParkingSpot cannot be returned by readSelection()
+readSelection() should return int
+***
+If you're unsure why you're getting above error read on.
+Due to the nature of the syntax above problem might occur because:
+1. This exception *might* occur in wrongly written multi-threaded tests.
+   Please refer to Mockito FAQ on limitations of concurrency testing.
+2. A spy is stubbed using when(spy.foo()).then() syntax. It is safer to stub spies - 
+   - with doReturn|Throw() family of methods. More in javadocs for Mockito.spy() method.
+
+	at com.parkit.parkingsystem.ParkingServiceTest.processIncomingVehicle(ParkingServiceTest.java:77)
+

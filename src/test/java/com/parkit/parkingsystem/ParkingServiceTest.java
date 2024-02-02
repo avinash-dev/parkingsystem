@@ -16,6 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,7 +33,7 @@ public class ParkingServiceTest {
     private static TicketDAO ticketDAO;
 
     @BeforeEach
-    private void setUpPerTest() {
+    private  void setUpPerTest() {
         try {
             when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
 
@@ -53,9 +55,32 @@ public class ParkingServiceTest {
     }
 
     @Test
+    //complétez le test de sortie d’un véhicule.
+    //Simula el metodo de salida del parking service 
     public void processExitingVehicleTest(){
         parkingService.processExitingVehicle();
-        verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
+        
+        verify(ticketDAO,Mockito.times(1)).getTicket(any(String.class));//creation
+        verify(ticketDAO,Mockito.times(1)).getNbTicket(any(String.class));//creation
+        verify(ticketDAO,Mockito.times(1)).updateTicket(any(Ticket.class));
+        verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));//creation
+    }
+
+    @Test
+    public void processIncomingVehicle(){
+        InputReaderUtil inputReaderUtil = Mockito.mock(InputReaderUtil.class);
+        ParkingSpotDAO parkingSpotDAO = Mockito.mock(ParkingSpotDAO.class);
+        TicketDAO ticketDAO = Mockito.mock(TicketDAO.class);
+
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ParkingSpot mockedParkingSpot = new ParkingSpot();
+        Mockito.when(parkingService.getNextParkingNumberIfAvailable()).thenReturn(mockedParkingSpot);
+
+        parkingService.processIncomingVehicle();
+        verify(parkingService, times(1)).getNextParkingNumberIfAvailable();
+        verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));//creation
+        verify(ticketDAO, Mockito.times(1)).saveTicket(any(Ticket.class));//creation
+        verify(ticketDAO, Mockito.times(1)).getNbTicket(any(String.class));//creation
     }
 
 }

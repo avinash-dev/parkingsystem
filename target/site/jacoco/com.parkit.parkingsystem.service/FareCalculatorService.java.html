@@ -1,60 +1,80 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FareCalculatorService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.service</a> &gt; <span class="el_source">FareCalculatorService.java</span></div><h1>FareCalculatorService.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.service;
-
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FareCalculatorService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.service</a> &gt; <span class="el_source">FareCalculatorService.java</span></div><h1>FareCalculatorService.java</h1><pre class="source lang-java linenums">//Cela définit le package auquel appartient la classe FareCalculatorService.
+package com.parkit.parkingsystem.service;
+//Importe la classe Fare depuis le package com.parkit.parkingsystem.constants. 
+//Cette classe contient probablement des constantes liées aux tarifs de stationnement.
 import com.parkit.parkingsystem.constants.Fare;
+//Importe la classe Ticket depuis le package com.parkit.parkingsystem.model. 
+//Cette classe représente probablement un billet de stationnement.
 import com.parkit.parkingsystem.model.Ticket;
 
-<span class="fc" id="L6">public class FareCalculatorService {</span>
+<span class="fc" id="L10">public class FareCalculatorService {</span>
 
-
+    //Surcharge de la méthode calculateFare. Appelle la deuxième méthode calculateFare 
+    //avec false pour le rabais.
     public void calculateFare(Ticket ticket) {
-<span class="fc" id="L10">        calculateFare(ticket,false);}</span>
-    // Verify that the exit time is valid &amp; later than the entry time
+<span class="fc" id="L15">        calculateFare(ticket,false);}</span>
+    //Débute la méthode calculateFare qui prend un objet Ticket et un booléen discount 
+    //indiquant si un rabais est appliqué.
     public void calculateFare(Ticket ticket, boolean discount) {
         // Verify that the exit time is valid &amp; later than the entry time
-<span class="pc bpc" id="L14" title="1 of 4 branches missed.">        if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {</span>
-<span class="fc" id="L15">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot; + ticket.getOutTime());</span>
+        //Vérifie si l'heure de sortie (outTime) est valide et postérieure à l'heure d'entrée
+        // (inTime). Sinon, une exception est levée.
+<span class="pc bpc" id="L22" title="1 of 4 branches missed.">        if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {</span>
+<span class="fc" id="L23">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot; + ticket.getOutTime());</span>
         }
 
         // Calculate the arrival time in milliseconds
-<span class="fc" id="L19">        long inTimeMillis = ticket.getInTime().getTime();</span>
+<span class="fc" id="L27">        long inTimeMillis = ticket.getInTime().getTime();</span>
 
         // Calculate the exit time in milliseconds.
-<span class="fc" id="L22">        long outTimeMillis = ticket.getOutTime().getTime();</span>
+<span class="fc" id="L30">        long outTimeMillis = ticket.getOutTime().getTime();</span>
 
         // Calculate the parking duration in minutes
-<span class="fc" id="L25">        long duration = outTimeMillis - inTimeMillis;</span>
+<span class="fc" id="L33">        long duration = outTimeMillis - inTimeMillis;</span>
 
         // Convert from milliseconds to minutes
-<span class="fc" id="L28">        int durationInMinutes = (int) (duration / (60 * 1000));</span>
+<span class="fc" id="L36">        int durationInMinutes = (int) (duration / (60 * 1000));</span>
 
         // If the time is less than or equal to 30 minutes, then the price is 0
-<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (durationInMinutes &lt;= 30) {</span>
-<span class="fc" id="L32">            ticket.setPrice(0.0);</span>
-<span class="fc" id="L33">        } else {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (durationInMinutes &lt;= 30) {</span>
+<span class="fc" id="L40">            ticket.setPrice(0.0);</span>
+<span class="fc" id="L41">        } else {</span>
             // Convert the minutes to hours
-<span class="fc" id="L35">            double additionalHours = durationInMinutes / 60.0;</span>
+<span class="fc" id="L43">            double additionalHours = durationInMinutes / 60.0;</span>
 
-                // Calculate the regular fare based on the type of vehicle
-<span class="pc bpc" id="L38" title="1 of 3 branches missed.">            switch (ticket.getParkingSpot().getParkingType()) {</span>
+            // Calculate the regular fare based on the type of vehicle
+            //Utilise une structure switch pour calculer le prix en fonction du type de véhicule.
+            //pour déterminer le type de stationnement du véhicule associé à un billet (ticket).
+            // En fonction du type de stationnement, il calcule le prix du stationnement 
+            //en considérant la durée de stationnement (additionalHours) et le taux horaire
+            // spécifique au type de véhicule. Si un rabais est appliqué (discount est vrai), 
+            //le prix est réduit de 5%.
+<span class="pc bpc" id="L52" title="1 of 3 branches missed.">            switch (ticket.getParkingSpot().getParkingType()) {//Commence la déclaration switch qui évalue le type de stationnement associé au billet.</span>
                 case CAR:
-<span class="fc bfc" id="L40" title="All 2 branches covered.">                    if(discount){</span>
-<span class="fc" id="L41">                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR * (1 - 0.05));}</span>
+                //Si le rabais est appliqué (discount est vrai), le prix est calculé 
+                //en réduisant le taux horaire de 5%. Sinon, le prix est calculé en utilisant
+                //le taux horaire standard. Le résultat est ensuite défini comme 
+                //le prix du billet.
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                    if(discount){</span>
+<span class="fc" id="L59">                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR * (1 - 0.05));}</span>
                     else{
-<span class="fc" id="L43">                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR);</span>
+<span class="fc" id="L61">                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR);</span>
                     }
-<span class="fc" id="L45">                    break;</span>
+<span class="fc" id="L63">                    break;</span>
                 case BIKE:
-<span class="fc bfc" id="L47" title="All 2 branches covered.">                    if(discount){</span>
-<span class="fc" id="L48">                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR * (1 - 0.05));}</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">                    if(discount){</span>
+<span class="fc" id="L66">                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR * (1 - 0.05));}</span>
                     else{
-<span class="fc" id="L50">                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR);</span>
+<span class="fc" id="L68">                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR);</span>
                     }
-<span class="fc" id="L52">                    break;</span>
+<span class="fc" id="L70">                    break;</span>
+                //Si le type de stationnement n'est ni CAR ni BIKE, une exception de type 
+                //IllegalArgumentException est lancée avec le message &quot;Unknown Parking Type&quot;.
                 default:
-<span class="nc" id="L54">                    throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
+<span class="nc" id="L74">                    throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
                 }
             }
-<span class="fc" id="L57">        }</span>
+<span class="fc" id="L77">        }</span>
     }
 
 

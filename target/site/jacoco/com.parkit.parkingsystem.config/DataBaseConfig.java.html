@@ -13,7 +13,7 @@ import java.sql.*;
 <span class="nc" id="L13">        logger.info(&quot;Create DB connection&quot;);</span>
 <span class="nc" id="L14">        Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
 <span class="nc" id="L15">        return DriverManager.getConnection(</span>
-                &quot;jdbc:mysql://localhost:3306/prod&quot;,&quot;root&quot;,&quot;rootroot&quot;);
+<span class="nc" id="L16">                &quot;jdbc:mysql://localhost:3306/prod&quot;,&quot;root&quot;,&quot;rootroot&quot;);</span>
     }
 
     public void closeConnection(Connection con){
@@ -23,7 +23,7 @@ import java.sql.*;
 <span class="nc" id="L23">                logger.info(&quot;Closing DB connection&quot;);</span>
 <span class="nc" id="L24">            } catch (SQLException e) {</span>
 <span class="nc" id="L25">                logger.error(&quot;Error while closing connection&quot;,e);</span>
-<span class="nc" id="L26">            }</span>
+            }
         }
 <span class="nc" id="L28">    }</span>
 
@@ -34,7 +34,7 @@ import java.sql.*;
 <span class="nc" id="L34">                logger.info(&quot;Closing Prepared Statement&quot;);</span>
 <span class="nc" id="L35">            } catch (SQLException e) {</span>
 <span class="nc" id="L36">                logger.error(&quot;Error while closing prepared statement&quot;,e);</span>
-<span class="nc" id="L37">            }</span>
+            }
         }
 <span class="nc" id="L39">    }</span>
 
@@ -45,7 +45,7 @@ import java.sql.*;
 <span class="nc" id="L45">                logger.info(&quot;Closing Result Set&quot;);</span>
 <span class="nc" id="L46">            } catch (SQLException e) {</span>
 <span class="nc" id="L47">                logger.error(&quot;Error while closing result set&quot;,e);</span>
-<span class="nc" id="L48">            }</span>
+            }
         }
 <span class="nc" id="L50">    }</span>
 }

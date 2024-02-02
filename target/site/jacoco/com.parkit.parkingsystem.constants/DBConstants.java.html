@@ -9,6 +9,6 @@
     public static final String UPDATE_TICKET = &quot;update ticket set PRICE=?, OUT_TIME=? where ID=?&quot;;
     public static final String GET_TICKET = &quot;select t.PARKING_NUMBER, t.ID, t.PRICE, t.IN_TIME, t.OUT_TIME, p.TYPE from ticket t,parking p where p.parking_number = t.parking_number and t.VEHICLE_REG_NUMBER=? order by t.IN_TIME  limit 1&quot;;
 <span class="nc" id="L11">    public static final String GET_LATEST_TICKET_FOR_VEHICLE = null;</span>
-<span class="nc" id="L12">    public static final String GET_NB_TICKET = &quot;select count (*) from ticket where VEHICLE_REG_NUMBER = ?&quot;;</span>
+<span class="nc" id="L12">    public static final String GET_NB_TICKET = &quot;select count(*) from ticket where VEHICLE_REG_NUMBER = ?&quot;;</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -13,6 +13,8 @@ import java.util.Date;
 
 public class ParkingService {
 
+    
+
     private static final Logger logger = LogManager.getLogger("ParkingService");
 
     private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
@@ -29,10 +31,13 @@ public class ParkingService {
 
     public void processIncomingVehicle() {
         try {
+            logger.info("Iniciando processIncoming");
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
             if (parkingSpot != null && parkingSpot.getId() > 0) {
+                logger.info("Entrando al if");
                 String vehicleRegNumber = getVehicleRegNumber();
                 parkingSpot.setAvailable(false);
+                logger.info("actualizando");
                 parkingSpotDAO.updateParking(parkingSpot);
 
                 Date inTime = new Date();
@@ -50,7 +55,7 @@ public class ParkingService {
                 System.out.println("Recorded in-time for vehicle number:" + vehicleRegNumber + " is:" + inTime);
 
                 // Display welcome message for recurring users with a discount
-                if (ticketDAO.getNbTicket(vehicleRegNumber)>0) {
+                if (ticketDAO.getNbTicket(vehicleRegNumber)>1) {
                     System.out.println("Glad to see you again! As a regular user of our parking lot, you will obtain a 5% discount.");
                     fareCalculatorService.calculateFare(ticket, true);
                 }
@@ -113,7 +118,12 @@ public class ParkingService {
             Ticket ticket = ticketDAO.getTicket(vehicleRegNumber);
             Date outTime = new Date();
             ticket.setOutTime(outTime);
-            fareCalculatorService.calculateFare(ticket);
+            if (ticketDAO.getNbTicket(vehicleRegNumber)>1) {
+                    fareCalculatorService.calculateFare(ticket, true);
+                }
+                else{
+                    fareCalculatorService.calculateFare(ticket);
+                }
 
             if (ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
