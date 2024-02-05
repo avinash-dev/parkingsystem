@@ -1,8 +1,42 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.ParkingServiceTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.527 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
-processIncomingVehicle  Time elapsed: 0.034 s  <<< ERROR!
+Tests run: 6, Failures: 3, Errors: 3, Skipped: 0, Time elapsed: 0.527 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
+testGetNextParkingNumberIfAvailableParkingNumberNotFound  Time elapsed: 0.52 s  <<< FAILURE!
+org.mockito.exceptions.verification.WantedButNotInvoked: 
+
+Wanted but not invoked:
+parkingSpotDAO.getNextAvailableSlot(CAR);
+-> at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberNotFound(ParkingServiceTest.java:121)
+Actually, there were zero interactions with this mock.
+
+	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberNotFound(ParkingServiceTest.java:121)
+
+processExitingVehicleTestUnableUpdate  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.parkit.parkingsystem.model.ParkingSpot.setParkingType(com.parkit.parkingsystem.constants.ParkingType)" because the return value of "com.parkit.parkingsystem.model.Ticket.getParkingSpot()" is null
+	at com.parkit.parkingsystem.ParkingServiceTest.processExitingVehicleTestUnableUpdate(ParkingServiceTest.java:92)
+
+testGetNextParkingNumberIfAvailableParkingNumberWrongArgument  Time elapsed: 0.002 s  <<< FAILURE!
+org.mockito.exceptions.verification.WantedButNotInvoked: 
+
+Wanted but not invoked:
+parkingSpotDAO.getNextAvailableSlot(UNKNOWN);
+-> at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(ParkingServiceTest.java:130)
+Actually, there were zero interactions with this mock.
+
+	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(ParkingServiceTest.java:130)
+
+testGetNextParkingNumberIfAvailable  Time elapsed: 0.001 s  <<< FAILURE!
+org.mockito.exceptions.verification.WantedButNotInvoked: 
+
+Wanted but not invoked:
+parkingSpotDAO.getNextAvailableSlot(CAR);
+-> at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailable(ParkingServiceTest.java:111)
+Actually, there were zero interactions with this mock.
+
+	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailable(ParkingServiceTest.java:111)
+
+testprocessIncomingVehicle  Time elapsed: 0.001 s  <<< ERROR!
 org.mockito.exceptions.misusing.WrongTypeOfReturnValue: 
 
 ParkingSpot cannot be returned by readSelection()
@@ -15,5 +49,12 @@ Due to the nature of the syntax above problem might occur because:
 2. A spy is stubbed using when(spy.foo()).then() syntax. It is safer to stub spies - 
    - with doReturn|Throw() family of methods. More in javadocs for Mockito.spy() method.
 
-	at com.parkit.parkingsystem.ParkingServiceTest.processIncomingVehicle(ParkingServiceTest.java:77)
+	at com.parkit.parkingsystem.ParkingServiceTest.testprocessIncomingVehicle(ParkingServiceTest.java:78)
+
+processExitingVehicleTest  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problem: 
+	e cannot be resolved to a variable
+
+	at com.parkit.parkingsystem.ParkingServiceTest.processExitingVehicleTest(ParkingServiceTest.java:67)
 

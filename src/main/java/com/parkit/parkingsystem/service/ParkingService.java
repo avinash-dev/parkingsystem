@@ -37,7 +37,6 @@ public class ParkingService {
                 logger.info("Entrando al if");
                 String vehicleRegNumber = getVehicleRegNumber();
                 parkingSpot.setAvailable(false);
-                logger.info("actualizando");
                 parkingSpotDAO.updateParking(parkingSpot);
 
                 Date inTime = new Date();
@@ -124,7 +123,7 @@ public class ParkingService {
                 else{
                     fareCalculatorService.calculateFare(ticket);
                 }
-
+            logger.error("Unable to process exiting vehicle", e);
             if (ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
                 parkingSpot.setAvailable(true);
