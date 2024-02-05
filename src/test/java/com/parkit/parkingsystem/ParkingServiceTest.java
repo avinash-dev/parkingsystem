@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.Date;
 
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 
@@ -104,10 +104,11 @@ public class ParkingServiceTest {
         //luego condicion when que devuelve una plaza de parking disponible
         //luego creation varibla result que es de tipo parking spot, resultado de llamar a getNextParkingNumberIfAvailable
         //de la clase arkingService
-        ParkingType vehicleType=ParkingType.CAR;
-        when (parkingSpotDAO.getNextAvailableSlot(vehicleType)).thenReturn(1);
-        //ParkingSpot result = parkingService.getNextParkingNumberIfAvailable();
-        parkingService.getNextParkingNumberIfAvailable();
+        ParkingType vehicleType = ParkingType.CAR;
+        ParkingSpot mockedParkingSpot = new ParkingSpot(1, vehicleType, true);
+        when(parkingSpotDAO.getNextAvailableSlot(vehicleType)).thenReturn(1);
+        ParkingSpot result = parkingService.getNextParkingNumberIfAvailable();
+        assertEquals(mockedParkingSpot, result);
         verify(parkingSpotDAO, times(1)).getNextAvailableSlot(vehicleType);
     }
 

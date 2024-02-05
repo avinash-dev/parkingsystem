@@ -123,7 +123,6 @@ public class ParkingService {
                 else{
                     fareCalculatorService.calculateFare(ticket);
                 }
-            logger.error("Unable to process exiting vehicle", e);
             if (ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
                 parkingSpot.setAvailable(true);
