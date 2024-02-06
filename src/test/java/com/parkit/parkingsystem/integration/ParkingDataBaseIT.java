@@ -25,7 +25,9 @@ import java.util.Date;
 public class ParkingDataBaseIT {
 
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
+    @Mock
     private static ParkingSpotDAO parkingSpotDAO;
+    
     private static TicketDAO ticketDAO;
     private static DataBasePrepareService dataBasePrepareService;
 
