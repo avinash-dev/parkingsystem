@@ -14,8 +14,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.*;
-
-
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 
 import java.util.Date;
 
@@ -27,7 +28,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 @ExtendWith(MockitoExtension.class)
 public class ParkingServiceTest {
 
-    private static ParkingService parkingService;
+    //private static ParkingService parkingService;
+
+    @Mock
+    private ParkingSpot parkingSpot;
+    @InjectMocks
+    private ParkingService parkingService;
 
     @Mock
     private static InputReaderUtil inputReaderUtil;
@@ -98,7 +104,24 @@ public class ParkingServiceTest {
 
         verify(ticketDAO, times(1)).updateTicket(mockedTicket);
     }
+
     @Test
+    public void testGetNextParkingNumberIfAvailable() {
+        // Given
+        when(parkingSpot.getId()).thenReturn(1);
+        when(parkingSpot.getType()).thenReturn(ParkingSpot.TYPE_CAR);
+        when(parkingSpot.isAvailable()).thenReturn(false);
+
+        // When
+        ParkingSpot actualParkingSpot = parkingService.getNextParkingNumberIfAvailable(parkingSpot);
+
+        // Then
+        assertEquals(parkingSpot, actualParkingSpot);
+        verify(parkingSpot).getId();
+        verify(parkingSpot).getType();
+        verify(parkingSpot).isAvailable();
+    }
+    /*@Test
     public void testGetNextParkingNumberIfAvailable(){
     
         //afin de simuler je dois créer une variable où est choisi le type de véhicule
@@ -111,7 +134,7 @@ public class ParkingServiceTest {
         ParkingSpot result = parkingService.getNextParkingNumberIfAvailable();
         assertEquals(mockedParkingSpot, result);
         verify(parkingSpotDAO, times(1)).getNextAvailableSlot(vehicleType);
-    }
+    }*/
 
     @Test
     public void testGetNextParkingNumberIfAvailableParkingNumberNotFound(){
