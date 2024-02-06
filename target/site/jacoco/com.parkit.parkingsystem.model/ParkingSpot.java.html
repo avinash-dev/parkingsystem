@@ -13,41 +13,45 @@ public class ParkingSpot {
 <span class="fc" id="L13">        this.isAvailable = isAvailable;</span>
 <span class="fc" id="L14">    }</span>
 
+<span class="fc" id="L16">    public ParkingSpot() {</span>
+        //TODO Auto-generated constructor stub
+<span class="fc" id="L18">    }</span>
+
     public int getId() {
-<span class="nc" id="L17">        return number;</span>
+<span class="fc" id="L21">        return number;</span>
     }
 
     public void setId(int number) {
-<span class="nc" id="L21">        this.number = number;</span>
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L25">        this.number = number;</span>
+<span class="nc" id="L26">    }</span>
 
     public ParkingType getParkingType() {
-<span class="fc" id="L25">        return parkingType;</span>
+<span class="fc" id="L29">        return parkingType;</span>
     }
 
     public void setParkingType(ParkingType parkingType) {
-<span class="nc" id="L29">        this.parkingType = parkingType;</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L33">        this.parkingType = parkingType;</span>
+<span class="nc" id="L34">    }</span>
 
     public boolean isAvailable() {
-<span class="nc" id="L33">        return isAvailable;</span>
+<span class="nc" id="L37">        return isAvailable;</span>
     }
 
     public void setAvailable(boolean available) {
-<span class="fc" id="L37">        isAvailable = available;</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L41">        isAvailable = available;</span>
+<span class="fc" id="L42">    }</span>
 
     @Override
     public boolean equals(Object o) {
-<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (this == o) return true;</span>
-<span class="nc bnc" id="L43" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
-<span class="nc" id="L44">        ParkingSpot that = (ParkingSpot) o;</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">        return number == that.number;</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if (this == o) return true;</span>
+<span class="pc bpc" id="L47" title="3 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L48">        ParkingSpot that = (ParkingSpot) o;</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        return number == that.number;</span>
     }
 
     @Override
     public int hashCode() {
-<span class="nc" id="L50">        return number;</span>
+<span class="fc" id="L54">        return number;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

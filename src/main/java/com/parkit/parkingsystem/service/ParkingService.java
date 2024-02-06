@@ -53,25 +53,25 @@ public class ParkingService {
                 System.out.println("Please park your vehicle in spot number:" + parkingSpot.getId());
                 System.out.println("Recorded in-time for vehicle number:" + vehicleRegNumber + " is:" + inTime);
 
-                // Display welcome message for recurring users with a discount
-                if (ticketDAO.getNbTicket(vehicleRegNumber)>1) {
-                    System.out.println("Glad to see you again! As a regular user of our parking lot, you will obtain a 5% discount.");
-                    fareCalculatorService.calculateFare(ticket, true);
-                }
-                else{
-                    fareCalculatorService.calculateFare(ticket);
-                }
 
             }
         } catch (Exception e) {
             logger.error("Unable to process incoming vehicle", e);
         }
+
+    }
+    public boolean recurringUser(String vehicleRegistrationNumber) {
+        return ticketDAO.getNbTicket(vehicleRegistrationNumber)>1;
+        //Este método es para devolver true or false si nbticket es >1, es decir es un cliente frecuente
+        //se ha separado en otra función para poder hacer el test
+
     }
 
     private String getVehicleRegNumber() throws Exception {
         System.out.println("Please type the vehicle registration number and press enter key");
         return inputReaderUtil.readVehicleRegistrationNumber();
     }
+   
 
     public ParkingSpot getNextParkingNumberIfAvailable() {
         int parkingNumber = 0;
@@ -117,12 +117,10 @@ public class ParkingService {
             Ticket ticket = ticketDAO.getTicket(vehicleRegNumber);
             Date outTime = new Date();
             ticket.setOutTime(outTime);
-            if (ticketDAO.getNbTicket(vehicleRegNumber)>1) {
-                    fareCalculatorService.calculateFare(ticket, true);
-                }
-                else{
-                    fareCalculatorService.calculateFare(ticket);
-                }
+            fareCalculatorService.calculateFare(ticket, true);
+            fareCalculatorService.calculateFare(ticket, recurringUser(ticket.getVehicleRegNumber()));
+            //RecurringUser es un método creado arriba
+
             if (ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
                 parkingSpot.setAvailable(true);
@@ -137,7 +135,8 @@ public class ParkingService {
             logger.error("Unable to process exiting vehicle", e);
         }
     }
-}
+}    
+
 
 /*package com.parkit.parkingsystem.service;
 

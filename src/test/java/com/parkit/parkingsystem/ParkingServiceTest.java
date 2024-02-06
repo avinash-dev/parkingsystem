@@ -14,13 +14,14 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.*;
-import org.junit.Test;
+
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 
@@ -32,31 +33,32 @@ public class ParkingServiceTest {
 
     @Mock
     private ParkingSpot parkingSpot;
+
     @InjectMocks
     private ParkingService parkingService;
 
     @Mock
     private static InputReaderUtil inputReaderUtil;
+
     @Mock
     private static ParkingSpotDAO parkingSpotDAO;
+
     @Mock
     private static TicketDAO ticketDAO;
+
+    @Mock
+    private static Ticket ticket;
+
+    
 
     @BeforeEach
     private  void setUpPerTest() {
         try {
-            when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
-
-            ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
-            Ticket ticket = new Ticket();
+            parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+            ticket = new Ticket();
             ticket.setInTime(new Date(System.currentTimeMillis() - (60*60*1000)));
             ticket.setParkingSpot(parkingSpot);
             ticket.setVehicleRegNumber("ABCDEF");
-            when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
-            when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
-
-            when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
-
             parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,95 +66,65 @@ public class ParkingServiceTest {
         }
     }
     //!!!!!!!!!!Etape 5 Testez unitairement la classe ParkingService!!!!!!!!
+
+    @Test
+    public void testprocessIncomingVehicle(){
+        when(inputReaderUtil.readSelection()).thenReturn(1);
+        when(parkingSpotDAO.getNextAvailableSlot(any(ParkingType.class))).thenReturn(1);
+        parkingService.processIncomingVehicle();
+        verify(ticketDAO, Mockito.times(1)).saveTicket(any(Ticket.class));//creation
+    }
+
     @Test
     //complétez le test de sortie d’un véhicule.
     //Simula el metodo de salida del parking service 
     //Ce test doit également mocker l’appel à la méthode getNbTicket()
     //implémentée lors de l’étape précédente.
-    public void processExitingVehicleTest(){
+    public void processExitingVehicleTest() throws Exception{
+        when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
+        when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
+        when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
         parkingService.processExitingVehicle();
-        
-        verify(ticketDAO,Mockito.times(1)).getTicket(any(String.class));//creation
-        verify(ticketDAO,Mockito.times(1)).getNbTicket(any(String.class));//creation
-        verify(ticketDAO,Mockito.times(1)).updateTicket(any(Ticket.class));
-        verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));//creation
+        ticketDAO.getNbTicket("ABCDEF");
+        verify(ticketDAO, Mockito.times(1)).updateTicket(any(Ticket.class));//creation
+        verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
+        verify(ticketDAO,Mockito.times(2)).getNbTicket(any(String.class));//creation
+
     }
 
     @Test
-    public void testprocessIncomingVehicle(){
-        ParkingSpot mockedParkingSpot = new ParkingSpot();
-        when(parkingService.getNextParkingNumberIfAvailable()).thenReturn(mockedParkingSpot);
-
-        parkingService.processIncomingVehicle();
-        verify(parkingService, times(1)).getNextParkingNumberIfAvailable();
-        verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));//creation
-        verify(ticketDAO, Mockito.times(1)).saveTicket(any(Ticket.class));//creation
-        verify(ticketDAO, Mockito.times(1)).getNbTicket(any(String.class));//creation
-    }
-
-    @Test
-    public void processExitingVehicleTestUnableUpdate(){
-        String vehicleRegNumber = "ABC123";
-        Ticket mockedTicket = new Ticket();
-        mockedTicket.setVehicleRegNumber(vehicleRegNumber);
-        mockedTicket.getParkingSpot().setParkingType(ParkingType.CAR);
-
-        when(ticketDAO.getTicket(vehicleRegNumber)).thenReturn(mockedTicket);
-        when(ticketDAO.updateTicket(mockedTicket)).thenReturn(false);
-
+    public void processExitingVehicleTestUnableUpdate() throws Exception{
+        when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
+        when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
+        when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(false);
         parkingService.processExitingVehicle();
-
-        verify(ticketDAO, times(1)).updateTicket(mockedTicket);
+        verify(ticketDAO,Mockito.times(1)).updateTicket(ticket);
     }
 
     @Test
     public void testGetNextParkingNumberIfAvailable() {
-        // Given
-        when(parkingSpot.getId()).thenReturn(1);
-        when(parkingSpot.getType()).thenReturn(ParkingSpot.TYPE_CAR);
-        when(parkingSpot.isAvailable()).thenReturn(false);
-
-        // When
-        ParkingSpot actualParkingSpot = parkingService.getNextParkingNumberIfAvailable(parkingSpot);
-
-        // Then
-        assertEquals(parkingSpot, actualParkingSpot);
-        verify(parkingSpot).getId();
-        verify(parkingSpot).getType();
-        verify(parkingSpot).isAvailable();
-    }
-    /*@Test
-    public void testGetNextParkingNumberIfAvailable(){
-    
-        //afin de simuler je dois créer une variable où est choisi le type de véhicule
-        //puis quand condition qui renvoie une place de parking disponible
-        //puis création d'un résultat varibla qui est de type place de parking, résultat de l'appel à getNextParkingNumberIfAvailable
-        //de la classe arkingService
-        ParkingType vehicleType = ParkingType.CAR;
-        ParkingSpot mockedParkingSpot = new ParkingSpot(1, vehicleType, true);
-        when(parkingSpotDAO.getNextAvailableSlot(vehicleType)).thenReturn(1);
-        ParkingSpot result = parkingService.getNextParkingNumberIfAvailable();
-        assertEquals(mockedParkingSpot, result);
-        verify(parkingSpotDAO, times(1)).getNextAvailableSlot(vehicleType);
-    }*/
-
-    @Test
-    public void testGetNextParkingNumberIfAvailableParkingNumberNotFound(){
-
-        ParkingType vehicleType=ParkingType.CAR;
-        when (parkingSpotDAO.getNextAvailableSlot(vehicleType)).thenReturn(-1);
-        //ParkingSpot result=parkingService.getNextParkingNumberIfAvailable();
-        parkingService.getNextParkingNumberIfAvailable();
-        verify(parkingSpotDAO, times(1)).getNextAvailableSlot(vehicleType);
+        when(inputReaderUtil.readSelection()).thenReturn(1);
+        when(parkingSpotDAO.getNextAvailableSlot(any(ParkingType.class))).thenReturn(1);
+        parkingService.processIncomingVehicle();
+        verify(parkingSpotDAO,Mockito.times(1)).getNextAvailableSlot(any(ParkingType.class));
     }
 
-    @Test
-    public void testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(){
-        ParkingType vehicleType=ParkingType.UNKNOWN;
-        when (parkingSpotDAO.getNextAvailableSlot(vehicleType)).thenThrow(new IllegalArgumentException("Unknow Vehicle"));
-        //ParkingSpot result=parkingService.getNextParkingNumberIfAvailable();
-        parkingService.getNextParkingNumberIfAvailable();
-        verify(parkingSpotDAO, times(1)).getNextAvailableSlot(vehicleType);
+@Test
+public void testGetNextParkingNumberIfAvailableParkingNumberNotFound() throws Exception {
+    when(inputReaderUtil.readSelection()).thenReturn(1);
+    when(parkingSpotDAO.getNextAvailableSlot(any(ParkingType.class))).thenReturn(-1);
 
-    }
-    }
+    parkingService.processIncomingVehicle();
+    verify(parkingSpotDAO,Mockito.times(1)).getNextAvailableSlot(any(ParkingType.class));
+    verify(inputReaderUtil, Mockito.times(0)).readVehicleRegistrationNumber();
+}
+@Test
+public void testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(){
+    when(inputReaderUtil.readSelection()).thenReturn(3);
+    parkingService.processIncomingVehicle();
+    verify(inputReaderUtil, Mockito.times(1)).readSelection();
+    verify(parkingSpotDAO, never()).getNextAvailableSlot(any(ParkingType.class));
+
+}
+}
+

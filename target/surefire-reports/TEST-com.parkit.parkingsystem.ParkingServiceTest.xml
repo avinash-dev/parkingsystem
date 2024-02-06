@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.parkit.parkingsystem.ParkingServiceTest" time="0.539" tests="6" errors="3" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.parkit.parkingsystem.ParkingServiceTest" time="0.553" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/surefire/surefirebooter13566210657005363405.jar /Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/surefire 2024-02-06T06-14-02_790-jvmRun1 surefire7017848974678096472tmp surefire_016578085686052828156tmp"/>
+    <property name="sun.java.command" value="/Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/surefire/surefirebooter12101276392212900751.jar /Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/surefire 2024-02-06T13-08-13_164-jvmRun1 surefire6716833792230002425tmp surefire_012843564889829041300tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/test-classes:/Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/classes:/Users/mauriciolopez/.m2/repository/org/apache/logging/log4j/log4j-api/2.12.1/log4j-api-2.12.1.jar:/Users/mauriciolopez/.m2/repository/org/apache/logging/log4j/log4j-core/2.12.1/log4j-core-2.12.1.jar:/Users/mauriciolopez/.m2/repository/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar:/Users/mauriciolopez/.m2/repository/com/google/protobuf/protobuf-java/3.6.1/protobuf-java-3.6.1.jar:/Users/mauriciolopez/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.3.2/junit-jupiter-api-5.3.2.jar:/Users/mauriciolopez/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/Users/mauriciolopez/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/Users/mauriciolopez/.m2/repository/org/junit/platform/junit-platform-commons/1.3.2/junit-platform-commons-1.3.2.jar:/Users/mauriciolopez/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.3.2/junit-jupiter-engine-5.3.2.jar:/Users/mauriciolopez/.m2/repository/org/junit/platform/junit-platform-engine/1.3.2/junit-platform-engine-1.3.2.jar:/Users/mauriciolopez/.m2/repository/org/mockito/mockito-junit-jupiter/2.23.4/mockito-junit-jupiter-2.23.4.jar:/Users/mauriciolopez/.m2/repository/org/mockito/mockito-core/2.23.4/mockito-core-2.23.4.jar:/Users/mauriciolopez/.m2/repository/net/bytebuddy/byte-buddy/1.9.3/byte-buddy-1.9.3.jar:/Users/mauriciolopez/.m2/repository/net/bytebuddy/byte-buddy-agent/1.9.3/byte-buddy-agent-1.9.3.jar:/Users/mauriciolopez/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/Users/mauriciolopez/.m2/repository/org/jacoco/jacoco-maven-plugin/0.8.5/jacoco-maven-plugin-0.8.5.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-plugin-api/3.0/maven-plugin-api-3.0.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-core/3.0/maven-core-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.2.3/plexus-classworlds-2.2.3.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.jar:/Users/mauriciolopez/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/Users/mauriciolopez/.m2/repository/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/reporting/maven-reporting-impl/2.1/maven-reporting-impl-2.1.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-project/2.0.10/maven-project-2.0.10.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-profile/2.0.10/maven-profile-2.0.10.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-artifact-manager/2.0.10/maven-artifact-manager-2.0.10.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-plugin-registry/2.0.10/maven-plugin-registry-2.0.10.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/doxia/doxia-core/1.1.2/doxia-core-1.1.2.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/doxia/doxia-logging-api/1.1.2/doxia-logging-api-1.1.2.jar:/Users/mauriciolopez/.m2/repository/xerces/xercesImpl/2.8.1/xercesImpl-2.8.1.jar:/Users/mauriciolopez/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.jar:/Users/mauriciolopez/.m2/repository/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/doxia/doxia-site-renderer/1.1.2/doxia-site-renderer-1.1.2.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/doxia/doxia-decoration-model/1.1.2/doxia-decoration-model-1.1.2.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/doxia/doxia-module-xhtml/1.1.2/doxia-module-xhtml-1.1.2.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/doxia/doxia-module-fml/1.1.2/doxia-module-fml-1.1.2.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.jar:/Users/mauriciolopez/.m2/repository/org/apache/velocity/velocity/1.5/velocity-1.5.jar:/Users/mauriciolopez/.m2/repository/commons-collections/commons-collections/3.2/commons-collections-3.2.jar:/Users/mauriciolopez/.m2/repository/commons-validator/commons-validator/1.2.0/commons-validator-1.2.0.jar:/Users/mauriciolopez/.m2/repository/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar:/Users/mauriciolopez/.m2/repository/commons-digester/commons-digester/1.6/commons-digester-1.6.jar:/Users/mauriciolopez/.m2/repository/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar:/Users/mauriciolopez/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar:/Users/mauriciolopez/.m2/repository/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar:/Users/mauriciolopez/.m2/repository/org/jacoco/org.jacoco.agent/0.8.5/org.jacoco.agent-0.8.5-runtime.jar:/Users/mauriciolopez/.m2/repository/org/jacoco/org.jacoco.core/0.8.5/org.jacoco.core-0.8.5.jar:/Users/mauriciolopez/.m2/repository/org/ow2/asm/asm/7.2/asm-7.2.jar:/Users/mauriciolopez/.m2/repository/org/ow2/asm/asm-commons/7.2/asm-commons-7.2.jar:/Users/mauriciolopez/.m2/repository/org/ow2/asm/asm-analysis/7.2/asm-analysis-7.2.jar:/Users/mauriciolopez/.m2/repository/org/ow2/asm/asm-tree/7.2/asm-tree-7.2.jar:/Users/mauriciolopez/.m2/repository/org/jacoco/org.jacoco.report/0.8.5/org.jacoco.report-0.8.5.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/plugins/maven-assembly-plugin/3.0.0/maven-assembly-plugin-3.0.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-artifact/3.0/maven-artifact-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-model/3.0/maven-model-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/shared/maven-common-artifact-filters/3.0.1/maven-common-artifact-filters-3.0.1.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/shared/maven-artifact-transfer/0.9.0/maven-artifact-transfer-0.9.0.jar:/Users/mauriciolopez/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.24/plexus-interpolation-1.24.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-archiver/3.4/plexus-archiver-3.4.jar:/Users/mauriciolopez/.m2/repository/org/apache/commons/commons-compress/1.11/commons-compress-1.11.jar:/Users/mauriciolopez/.m2/repository/org/iq80/snappy/snappy/0.4/snappy-0.4.jar:/Users/mauriciolopez/.m2/repository/org/tukaani/xz/1.5/xz-1.5.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/shared/maven-shared-io/3.0.0/maven-shared-io-3.0.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/wagon/wagon-provider-api/2.10/wagon-provider-api-2.10.jar:/Users/mauriciolopez/.m2/repository/commons-io/commons-io/2.5/commons-io-2.5.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/shared/maven-filtering/3.1.1/maven-filtering-3.1.1.jar:/Users/mauriciolopez/.m2/repository/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar:/Users/mauriciolopez/.m2/repository/org/codehaus/plexus/plexus-io/2.7.1/plexus-io-2.7.1.jar:/Users/mauriciolopez/.m2/repository/org/apache/maven/maven-archiver/3.1.1/maven-archiver-3.1.1.jar:/Users/mauriciolopez/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/surefire/surefirebooter13566210657005363405.jar"/>
+    <property name="surefire.real.class.path" value="/Users/mauriciolopez/Documents/Formation_Dev_salesforce/projets/p5/parkingsystem/target/surefire/surefirebooter12101276392212900751.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS"/>
@@ -58,249 +58,10 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testGetNextParkingNumberIfAvailableParkingNumberNotFound" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.531">
-    <failure message="&#10;Wanted but not invoked:&#10;parkingSpotDAO.getNextAvailableSlot(CAR);&#10;-&gt; at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberNotFound(ParkingServiceTest.java:146)&#10;Actually, there were zero interactions with this mock.&#10;" type="org.mockito.exceptions.verification.WantedButNotInvoked">org.mockito.exceptions.verification.WantedButNotInvoked: 
-
-Wanted but not invoked:
-parkingSpotDAO.getNextAvailableSlot(CAR);
--> at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberNotFound(ParkingServiceTest.java:146)
-Actually, there were zero interactions with this mock.
-
-	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberNotFound(ParkingServiceTest.java:146)
-</failure>
-    <system-out><![CDATA[Please select the vehicle type from the menu
-1 CAR
-2 BIKE
-Incorrect input provided
-06:14:03.890 [main] ERROR ParkingService - Error parsing user input for the type of vehicle
-java.lang.IllegalArgumentException: Entered input is invalid
-	at com.parkit.parkingsystem.service.ParkingService.getVehicleType(ParkingService.java:109) ~[classes/:?]
-	at com.parkit.parkingsystem.service.ParkingService.getNextParkingNumberIfAvailable(ParkingService.java:80) ~[classes/:?]
-	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberNotFound(ParkingServiceTest.java:145) ~[test-classes/:?]
-	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:532) ~[junit-platform-commons-1.3.2.jar:1.3.2]
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:115) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:171) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:167) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:114) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:59) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:108) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170) [junit-platform-launcher-1.2.0.jar:1.2.0]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154) [junit-platform-launcher-1.2.0.jar:1.2.0]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90) [junit-platform-launcher-1.2.0.jar:1.2.0]
-	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:132) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
-	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:111) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379) [surefire-booter-2.21.0.jar:2.21.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340) [surefire-booter-2.21.0.jar:2.21.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125) [surefire-booter-2.21.0.jar:2.21.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413) [surefire-booter-2.21.0.jar:2.21.0]
-]]></system-out>
-    <system-err><![CDATA[ERROR StatusLogger No Log4j 2 configuration file found. Using default configuration (logging only errors to the console), or user programmatically provided configurations. Set system property 'log4j2.debug' to show Log4j 2 internal initialization logging. See https://logging.apache.org/log4j/2.x/manual/configuration.html for instructions on how to configure Log4j 2
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting java/sql/Timestamp.
-	at org.jacoco.agent.rt.internal_43f5073.CoverageTransformer.transform(CoverageTransformer.java:94)
-	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
-	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
-	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:610)
-	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
-	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1118)
-	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:182)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:821)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:741)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:665)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:700)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:669)
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
-	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
-	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3549)
-	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2727)
-	at net.bytebuddy.description.method.MethodList$ForLoadedMethods.<init>(MethodList.java:109)
-	at net.bytebuddy.description.type.TypeDescription$ForLoadedType.getDeclaredMethods(TypeDescription.java:8426)
-	at net.bytebuddy.description.type.TypeDescription$Generic$OfNonGenericType.getDeclaredMethods(TypeDescription.java:3654)
-	at net.bytebuddy.description.type.TypeDescription$Generic$LazyProjection.getDeclaredMethods(TypeDescription.java:6029)
-	at net.bytebuddy.dynamic.scaffold.subclass.ConstructorStrategy$Default$5.doExtractConstructors(ConstructorStrategy.java:175)
-	at net.bytebuddy.dynamic.scaffold.subclass.ConstructorStrategy$Default.extractConstructors(ConstructorStrategy.java:196)
-	at net.bytebuddy.dynamic.scaffold.subclass.SubclassDynamicTypeBuilder.applyConstructorStrategy(SubclassDynamicTypeBuilder.java:223)
-	at net.bytebuddy.dynamic.scaffold.subclass.SubclassDynamicTypeBuilder.make(SubclassDynamicTypeBuilder.java:198)
-	at net.bytebuddy.dynamic.scaffold.subclass.SubclassDynamicTypeBuilder.make(SubclassDynamicTypeBuilder.java:189)
-	at net.bytebuddy.dynamic.DynamicType$Builder$AbstractBase.make(DynamicType.java:3394)
-	at net.bytebuddy.dynamic.DynamicType$Builder$AbstractBase$Delegator.make(DynamicType.java:3583)
-	at org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator.mockClass(SubclassBytecodeGenerator.java:128)
-	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator$1.call(TypeCachingBytecodeGenerator.java:37)
-	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator$1.call(TypeCachingBytecodeGenerator.java:34)
-	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:152)
-	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:365)
-	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:174)
-	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:376)
-	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClass(TypeCachingBytecodeGenerator.java:32)
-	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMockType(SubclassByteBuddyMockMaker.java:71)
-	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMock(SubclassByteBuddyMockMaker.java:42)
-	at org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker.createMock(ByteBuddyMockMaker.java:25)
-	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:35)
-	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:69)
-	at org.mockito.Mockito.mock(Mockito.java:1896)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.processAnnotationForMock(MockAnnotationProcessor.java:44)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:19)
-	at org.mockito.internal.configuration.MockAnnotationProcessor.process(MockAnnotationProcessor.java:16)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.createMockFor(IndependentAnnotationEngine.java:38)
-	at org.mockito.internal.configuration.IndependentAnnotationEngine.process(IndependentAnnotationEngine.java:62)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.processIndependentAnnotations(InjectingAnnotationEngine.java:57)
-	at org.mockito.internal.configuration.InjectingAnnotationEngine.process(InjectingAnnotationEngine.java:41)
-	at org.mockito.MockitoAnnotations.initMocks(MockitoAnnotations.java:69)
-	at org.mockito.internal.framework.DefaultMockitoSession.<init>(DefaultMockitoSession.java:35)
-	at org.mockito.internal.session.DefaultMockitoSessionBuilder.startMocking(DefaultMockitoSessionBuilder.java:78)
-	at org.mockito.junit.jupiter.MockitoExtension.beforeEach(MockitoExtension.java:165)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeEachCallbacks$0(TestMethodTestDescriptor.java:130)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeMethodsOrCallbacksUntilExceptionOccurs(TestMethodTestDescriptor.java:156)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeEachCallbacks(TestMethodTestDescriptor.java:129)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:108)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:59)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:108)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90)
-	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:132)
-	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:111)
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413)
-Caused by: java.io.IOException: Error while instrumenting java/sql/Timestamp.
-	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrumentError(Instrumenter.java:159)
-	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrument(Instrumenter.java:109)
-	at org.jacoco.agent.rt.internal_43f5073.CoverageTransformer.transform(CoverageTransformer.java:92)
-	... 87 more
-Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 65
-	at org.jacoco.agent.rt.internal_43f5073.asm.ClassReader.<init>(ClassReader.java:195)
-	at org.jacoco.agent.rt.internal_43f5073.asm.ClassReader.<init>(ClassReader.java:176)
-	at org.jacoco.agent.rt.internal_43f5073.asm.ClassReader.<init>(ClassReader.java:162)
-	at org.jacoco.agent.rt.internal_43f5073.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
-	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrument(Instrumenter.java:75)
-	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrument(Instrumenter.java:107)
-	... 88 more
-]]></system-err>
-  </testcase>
-  <testcase name="processExitingVehicleTestUnableUpdate" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0">
-    <error message="Cannot invoke &quot;com.parkit.parkingsystem.model.ParkingSpot.setParkingType(com.parkit.parkingsystem.constants.ParkingType)&quot; because the return value of &quot;com.parkit.parkingsystem.model.Ticket.getParkingSpot()&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke "com.parkit.parkingsystem.model.ParkingSpot.setParkingType(com.parkit.parkingsystem.constants.ParkingType)" because the return value of "com.parkit.parkingsystem.model.Ticket.getParkingSpot()" is null
-	at com.parkit.parkingsystem.ParkingServiceTest.processExitingVehicleTestUnableUpdate(ParkingServiceTest.java:98)
-</error>
-  </testcase>
-  <testcase name="testGetNextParkingNumberIfAvailableParkingNumberWrongArgument" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.002">
-    <failure message="&#10;Wanted but not invoked:&#10;parkingSpotDAO.getNextAvailableSlot(UNKNOWN);&#10;-&gt; at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(ParkingServiceTest.java:155)&#10;Actually, there were zero interactions with this mock.&#10;" type="org.mockito.exceptions.verification.WantedButNotInvoked">org.mockito.exceptions.verification.WantedButNotInvoked: 
-
-Wanted but not invoked:
-parkingSpotDAO.getNextAvailableSlot(UNKNOWN);
--> at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(ParkingServiceTest.java:155)
-Actually, there were zero interactions with this mock.
-
-	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(ParkingServiceTest.java:155)
-</failure>
-    <system-out><![CDATA[Please select the vehicle type from the menu
-1 CAR
-2 BIKE
-Incorrect input provided
-06:14:03.914 [main] ERROR ParkingService - Error parsing user input for the type of vehicle
-java.lang.IllegalArgumentException: Entered input is invalid
-	at com.parkit.parkingsystem.service.ParkingService.getVehicleType(ParkingService.java:109) ~[classes/:?]
-	at com.parkit.parkingsystem.service.ParkingService.getNextParkingNumberIfAvailable(ParkingService.java:80) ~[classes/:?]
-	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailableParkingNumberWrongArgument(ParkingServiceTest.java:154) ~[test-classes/:?]
-	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:532) ~[junit-platform-commons-1.3.2.jar:1.3.2]
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:115) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:171) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:167) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:114) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:59) ~[junit-jupiter-engine-5.3.2.jar:5.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:108) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$4(NodeTestTask.java:112) ~[junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:72) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:98) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:74) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) [junit-platform-engine-1.3.2.jar:1.3.2]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:170) [junit-platform-launcher-1.2.0.jar:1.2.0]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:154) [junit-platform-launcher-1.2.0.jar:1.2.0]
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:90) [junit-platform-launcher-1.2.0.jar:1.2.0]
-	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:132) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
-	at org.junit.platform.surefire.provider.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:111) [junit-platform-surefire-provider-1.2.0.jar:1.2.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379) [surefire-booter-2.21.0.jar:2.21.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340) [surefire-booter-2.21.0.jar:2.21.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125) [surefire-booter-2.21.0.jar:2.21.0]
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413) [surefire-booter-2.21.0.jar:2.21.0]
-]]></system-out>
-  </testcase>
-  <testcase name="testGetNextParkingNumberIfAvailable" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.001">
-    <error message="Unresolved compilation problems: &#10;	The method getType() is undefined for the type ParkingSpot&#10;	TYPE_CAR cannot be resolved or is not a field&#10;	The method getNextParkingNumberIfAvailable() in the type ParkingService is not applicable for the arguments (ParkingSpot)&#10;	The method getType() is undefined for the type ParkingSpot&#10;" type="java.lang.Error">java.lang.Error: 
-Unresolved compilation problems: 
-	The method getType() is undefined for the type ParkingSpot
-	TYPE_CAR cannot be resolved or is not a field
-	The method getNextParkingNumberIfAvailable() in the type ParkingService is not applicable for the arguments (ParkingSpot)
-	The method getType() is undefined for the type ParkingSpot
-
-	at com.parkit.parkingsystem.ParkingServiceTest.testGetNextParkingNumberIfAvailable(ParkingServiceTest.java:112)
-</error>
-  </testcase>
-  <testcase name="testprocessIncomingVehicle" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0">
-    <error message="Unresolved compilation problem: &#10;	The constructor ParkingSpot() is undefined&#10;" type="java.lang.Error">java.lang.Error: 
-Unresolved compilation problem: 
-	The constructor ParkingSpot() is undefined
-
-	at com.parkit.parkingsystem.ParkingServiceTest.testprocessIncomingVehicle(ParkingServiceTest.java:83)
-</error>
-  </testcase>
-  <testcase name="processExitingVehicleTest" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.002"/>
+  <testcase name="testGetNextParkingNumberIfAvailableParkingNumberNotFound" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.546"/>
+  <testcase name="processExitingVehicleTestUnableUpdate" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.001"/>
+  <testcase name="testGetNextParkingNumberIfAvailableParkingNumberWrongArgument" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.002"/>
+  <testcase name="testGetNextParkingNumberIfAvailable" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.001"/>
+  <testcase name="testprocessIncomingVehicle" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0"/>
+  <testcase name="processExitingVehicleTest" classname="com.parkit.parkingsystem.ParkingServiceTest" time="0.001"/>
 </testsuite>

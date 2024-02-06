@@ -19,7 +19,7 @@ import com.parkit.parkingsystem.model.Ticket;
         // Verify that the exit time is valid &amp; later than the entry time
         //Vérifie si l'heure de sortie (outTime) est valide et postérieure à l'heure d'entrée
         // (inTime). Sinon, une exception est levée.
-<span class="pc bpc" id="L22" title="1 of 4 branches missed.">        if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {</span>
+<span class="fc bfc" id="L22" title="All 4 branches covered.">        if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {</span>
 <span class="fc" id="L23">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot; + ticket.getOutTime());</span>
         }
 
