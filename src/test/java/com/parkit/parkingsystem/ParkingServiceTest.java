@@ -100,10 +100,11 @@ public class ParkingServiceTest {
     }
     @Test
     public void testGetNextParkingNumberIfAvailable(){
-        //para poder simular tengo que crear una variable donde se escoge el tipo de vehiculo
-        //luego condicion when que devuelve una plaza de parking disponible
-        //luego creation varibla result que es de tipo parking spot, resultado de llamar a getNextParkingNumberIfAvailable
-        //de la clase arkingService
+    
+        //afin de simuler je dois créer une variable où est choisi le type de véhicule
+        //puis quand condition qui renvoie une place de parking disponible
+        //puis création d'un résultat varibla qui est de type place de parking, résultat de l'appel à getNextParkingNumberIfAvailable
+        //de la classe arkingService
         ParkingType vehicleType = ParkingType.CAR;
         ParkingSpot mockedParkingSpot = new ParkingSpot(1, vehicleType, true);
         when(parkingSpotDAO.getNextAvailableSlot(vehicleType)).thenReturn(1);
