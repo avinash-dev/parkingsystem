@@ -129,7 +129,8 @@ public class TicketDAO {
             // It then returns the numberOfTickets variable, which contains the count of tickets for the specified vehicle.
             dataBaseConfig.closeConnection(con);
             return numberOfTickets;
-        }
+        
     }
+}
 }
 

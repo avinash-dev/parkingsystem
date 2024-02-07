@@ -31,7 +31,7 @@ public class ParkingService {
 
     public void processIncomingVehicle() {
         try {
-            logger.info("Iniciando processIncoming");
+            logger.info("Start processIncoming");
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
             if (parkingSpot != null && parkingSpot.getId() > 0) {
                 logger.info("Entrando al if");
@@ -52,6 +52,11 @@ public class ParkingService {
                 System.out.println("Generated Ticket and saved in DB");
                 System.out.println("Please park your vehicle in spot number:" + parkingSpot.getId());
                 System.out.println("Recorded in-time for vehicle number:" + vehicleRegNumber + " is:" + inTime);
+
+                // Modification ici : Afficher le message pour les utilisateurs récurrents
+            if (recurringUser(vehicleRegNumber)) {
+                System.out.println("glad to see you again");
+            }
 
 
             }

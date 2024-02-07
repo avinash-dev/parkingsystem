@@ -14,13 +14,260 @@ import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.service.FareCalculatorService;
+
+/*
+ * Cette classe réalise des tests unitaires sous différents scénarios
+ * pour évaluer le bon fonctionnement des méthodes dans FareCalculatorService.
+ */
+public class FareCalculatorServiceTest {
+
+    private static FareCalculatorService fareCalculatorService;
+    private Ticket ticket;
+
+    // Crée une instance de FareCalculatorService
+    @BeforeAll // avant d'exécuter tous les tests
+    private static void setUp() {
+        fareCalculatorService = new FareCalculatorService();
+    }
+
+    // Crée une instance de ticket
+    @BeforeEach // avant chaque test
+    private void setUpPerTest() {
+        ticket = new Ticket();
+    }
+
+    @Test // représente un test individuel pour un cas spécifique
+
+    // Test dans le cas d'une voiture qui se gare pendant une heure
+    public void calculateFareCar(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+        //Configuration du ticket :
+        ticket.setInTime(inTime);//Configure l'heure d'entrée du ticket avec la valeur de inTime.
+        ticket.setOutTime(outTime);//Configure l'heure de sortie du ticket avec la valeur de outTime.
+        ticket.setParkingSpot(parkingSpot);//Configure l'emplacement de stationnement du ticket avec l'objet parkingSpot créé précédemment.
+        fareCalculatorService.calculateFare(ticket);
+        // Vérifie que la première valeur est égale à la seconde
+        assertEquals(ticket.getPrice(), Fare.CAR_RATE_PER_HOUR);
+    }
+
+    @Test
+    // Cas d'une moto qui se gare pendant une heure
+    public void calculateFareBike(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        fareCalculatorService.calculateFare(ticket);
+        // Vérifie que la première valeur est égale à la seconde
+        assertEquals(ticket.getPrice(), Fare.BIKE_RATE_PER_HOUR);
+    }
+
+    @Test
+    // Cas d'un type de parking inconnu qui se gare pendant une heure
+    public void calculateFareUnkownType(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, null,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        //Vérification de l'exception :
+        //assertThrows() est une méthode fournie par le framework de test JUnit. Elle est utilisée pour vérifier si une exception est levée lors de l'exécution d'une certaine action.
+        //Deux arguments sont attendues : la classe d'exception attendue et la méthode à tester.
+        //expression lambda (() -> ...) qui représente le code à exécuter pour le test fareCalculatorService.calculateFare(ticket)
+        assertThrows(NullPointerException.class, () -> fareCalculatorService.calculateFare(ticket));
+    }
+
+
+
+    @Test
+    // Test pour une heure d'entrée future pour une moto
+    public void calculateFareBikeWithFutureInTime(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() + (  60 * 60 * 1000) );
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        assertThrows(IllegalArgumentException.class, () -> fareCalculatorService.calculateFare(ticket));
+    }
+
+    @Test
+    // Test pour une moto lorsqu'elle se gare pour moins d'une heure mais plus de 30 minutes
+    public void calculateFareBikeWithLessThanOneHourParkingTime(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  45 * 60 * 1000) );//45 minutes de stationnement devraient donner 3/4 du tarif de stationnement
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+
+        fareCalculatorService.calculateFare(ticket);
+        assertEquals((0.75 * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice() );
+    }
+
+    @Test
+    // Test pour une voiture lorsqu'elle se gare pour moins d'une heure mais plus de 30 minutes.
+    public void calculateFareCarWithLessThanOneHourParkingTime(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  45 * 60 * 1000) );//45 minutes de stationnement devraient donner 3/4 du tarif de stationnement
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+        
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        
+        fareCalculatorService.calculateFare(ticket);
+
+        assertEquals( (0.75 * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
+    }
+
+
+    @Test
+    // Test pour une moto lorsqu'elle se gare pendant 30 minutes
+    public void calculateFareBikeWith30ParkingTime(){
+
+        Date inTime = new Date();
+
+        inTime.setTime( System.currentTimeMillis() - (  30 * 60 * 1000) );
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        fareCalculatorService.calculateFare(ticket);
+        assertEquals((0.0 ), ticket.getPrice() );
+    }
+
+    
+    @Test
+    // Test pour une voiture lorsqu'elle se gare pendant 30 minutes
+    public void calculateFareCarWith30ParkingTime(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - ( 30 * 60 * 1000) );//30 : C'est le nombre de minutes*60 : Il y a 60 secondes dans une minute, donc nous multiplions par 60 pour convertir les minutes en secondes*1000 : Il y a 1000 millisecondes dans une seconde, donc nous multiplions par 1000 pour convertir les secondes en millisecondes.
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        fareCalculatorService.calculateFare(ticket);
+        assertEquals( (0.0 ) , ticket.getPrice());
+    }
+
+    @Test
+    // Test pour une voiture lorsqu'elle se gare pour plus d'une journée
+    public void calculateFareCarWithMoreThanADayParkingTime(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  24 * 60 * 60 * 1000) );//24 : C'est le nombre d'heures*60 : Il y a 60 minutes dans une heure, donc nous multiplions par 60 pour convertir les heures en minutes*60 : Il y a 60 secondes dans une minute, donc nous multiplions par 60 pour convertir les minutes en secondes*1000 : Il y a 1000 millisecondes dans une seconde, donc nous multiplions par 1000 pour convertir les secondes en millisecondes.
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        fareCalculatorService.calculateFare(ticket);
+        assertEquals( (24 * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
+    }
+    //!!!!!!!!!!ÉTAPE 4: DÉVELOPPER LA FONCTIONNALITÉ DE RÉDUCTION DE 5%!!!!!!!!!!!!
+
+    @Test
+    // Test pour vérifier qu'un véhicule avec un ticket de réduction paie 95 % du prix total.
+    public void calculateFareCarWithDiscount() {//Définit une méthode publique appelée 
+        //calculateFareCarWithDiscount qui sera exécutée en tant que partie de la suite de tests.
+        // Crée un objet Date représentant l'heure d'entrée du véhicule.
+        Date inTime = new Date();
+        
+        // Définit l'heure d'entrée actuelle pour simuler que le véhicule est stationné pendant 1 heure (en millisecondes).
+        inTime.setTime(System.currentTimeMillis() - (1 * 60 * 60 * 1000));//Cette soustraction soustrait la durée d'une heure en millisecondes de l'heure actuelle, ce qui recule le temps d'une heure.
+        // Crée un autre objet Date pour représenter l'instant actuel, initialise l'heure de sortie du ticket de stationnement en utilisant l'heure actuelle au moment de l'exécution du programme.
+        Date outTime = new Date();
+
+        // Crée un objet ParkingSpot avec l'ID 1, le type de véhicule CAR et marqué comme réduction (true).
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, true);
+        // Crée un objet Ticket
+        Ticket ticket = new Ticket();
+        // Définit l'heure d'entrée du ticket avec la valeur de inTime.
+        ticket.setInTime(inTime);
+        // Définit l'heure de sortie du ticket avec la valeur de outTime.
+        ticket.setOutTime(outTime);
+        // Définit l'emplacement de stationnement du ticket avec l'objet parkingSpot créé précédemment.
+        ticket.setParkingSpot(parkingSpot);
+
+        // Calcule le tarif avec réduction
+        // Appelle la méthode calculateFare de l'objet fareCalculatorService en passant le ticket et en spécifiant qu'il bénéficie d'une réduction (true).
+        fareCalculatorService.calculateFare(ticket, true);
+
+        // Vérifie que le prix calculé est égal à 95 % du prix total attendu
+        // Utilise la méthode assertEquals de JUnit pour vérifier que le prix calculé du ticket est égal à 95 % du tarif total attendu pour une voiture par heure.
+        assertEquals(0.95 * Fare.CAR_RATE_PER_HOUR, ticket.getPrice());
+    }
+
+    @Test
+    // Test pour vérifier qu'une moto avec un ticket de réduction paie 95 % du prix total.
+    public void calculateFareBikeWithDiscountFor() {
+        // Date et heure actuelles
+        Date inTime = new Date();
+        
+        // Simuler que la moto est stationnée pendant 1 heure
+        inTime.setTime(System.currentTimeMillis() - (1 * 60 * 60 * 1000));
+        Date outTime = new Date();
+
+        // Crée un ticket avec un type de moto et marqué comme réduction
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, true);
+        Ticket ticket = new Ticket();
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+
+        // Calcule le tarif avec réduction
+        fareCalculatorService.calculateFare(ticket, true);
+
+        // Vérifie que le prix calculé est égal à 95 % du prix total attendu
+        assertEquals(0.95*Fare.BIKE_RATE_PER_HOUR, ticket.getPrice());
+    }
+}
+
+
+
+/*package com.parkit.parkingsystem;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.Date;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.parkit.parkingsystem.constants.Fare;
+import com.parkit.parkingsystem.constants.ParkingType;
+import com.parkit.parkingsystem.model.ParkingSpot;
+import com.parkit.parkingsystem.model.Ticket;
+import com.parkit.parkingsystem.service.FareCalculatorService;
 /*
  * This class performs unit tests   under various scenarios  
  *  to assess the proper functioning of 
  *  the methods in FareCalculatorService
  *  under various scenarios
  */
-public class FareCalculatorServiceTest {
+/*public class FareCalculatorServiceTest {
 
     private static FareCalculatorService fareCalculatorService;
     private Ticket ticket;
@@ -261,4 +508,4 @@ public class FareCalculatorServiceTest {
         // Verify that the calculated price is equal to 95% of the expected total price
         assertEquals(0.95*Fare.BIKE_RATE_PER_HOUR, ticket.getPrice());
     }
-}
+}*/
