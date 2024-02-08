@@ -13,10 +13,13 @@ public class FareCalculatorService {
     //avec false pour le rabais.
     public void calculateFare(Ticket ticket) {
         calculateFare(ticket,false);}
+    //La méthode calculateFare(Ticket ticket, boolean discount) prend deux arguments : 
+    //un objet Ticket et une valeur booléenne discount qui indique si une réduction doit être
+    // appliquée ou non. La méthode vérifie d'abord si l'heure de sortie ( outTime ) est valide et
+    // après l'heure d'entrée ( inTime ). Sinon, une IllegalArgumentException est levée.
     //Débute la méthode calculateFare qui prend un objet Ticket et un booléen discount 
     //indiquant si un rabais est appliqué.
     public void calculateFare(Ticket ticket, boolean discount) {
-        // Verify that the exit time is valid & later than the entry time
         //Vérifie si l'heure de sortie (outTime) est valide et postérieure à l'heure d'entrée
         // (inTime). Sinon, une exception est levée.
         if (ticket.getOutTime() == null || ticket.getOutTime().before(ticket.getInTime())) {
@@ -42,7 +45,6 @@ public class FareCalculatorService {
             // Convert the minutes to hours
             double additionalHours = durationInMinutes / 60.0;
 
-            // Calculate the regular fare based on the type of vehicle
             //Utilise une structure switch pour calculer le prix en fonction du type de véhicule.
             //pour déterminer le type de stationnement du véhicule associé à un billet (ticket).
             // En fonction du type de stationnement, il calcule le prix du stationnement 

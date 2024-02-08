@@ -75,7 +75,9 @@ public class ParkingServiceTest {
         verify(ticketDAO, Mockito.times(1)).saveTicket(any(Ticket.class));//creation
     }
 
-    @Test
+    //!!!!!!!!Étape 5 : Testez unitairement la classe ParkingService grâce aux Mocks
+
+    @Test 
     //complétez le test de sortie d’un véhicule.
     //Simula el metodo de salida del parking service 
     //Ce test doit également mocker l’appel à la méthode getNbTicket()
