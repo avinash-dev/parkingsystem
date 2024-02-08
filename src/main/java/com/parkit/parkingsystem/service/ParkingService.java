@@ -64,6 +64,14 @@ public class ParkingService {
         }
 
     }
+    /**
+     * The function "recurringUser" returns true if the number of tickets associated with a vehicle
+     * registration number is greater than 1, indicating that the user is a recurring customer.
+     * 
+     * @param vehicleRegistrationNumber The vehicle registration number is a unique identifier for a
+     * vehicle. It is used to track the number of tickets associated with a particular vehicle.
+     * @return The method is returning a boolean value, either true or false.
+     */
     public boolean recurringUser(String vehicleRegistrationNumber) {//return true or false if condition is >1
         return ticketDAO.getNbTicket(vehicleRegistrationNumber)>1;//recoit une inmatriculation >1
         //Este método es para devolver true or false si nbticket es >1, es decir es un cliente frecuente
@@ -116,14 +124,23 @@ public class ParkingService {
         }
     }
 
+    /**
+     * The processExitingVehicle function processes the exit of a vehicle from a parking spot by
+     * updating the ticket information, calculating the fare, and updating the parking spot
+     * availability.
+     */
     public void processExitingVehicle() {
         try {
             String vehicleRegNumber = getVehicleRegNumber();
             Ticket ticket = ticketDAO.getTicket(vehicleRegNumber);
             Date outTime = new Date();
             ticket.setOutTime(outTime);
+            // `fareCalculatorService.calculateFare(ticket,
+            // recurringUser(ticket.getVehicleRegNumber()))` is calling the `calculateFare` method of
+            // the `fareCalculatorService` object and passing two arguments: `ticket` and
+            // `recurringUser(ticket.getVehicleRegNumber())`.
             fareCalculatorService.calculateFare(ticket, recurringUser(ticket.getVehicleRegNumber()));
-            //RecurringUser es un método creado arriba
+            //RecurringUser est une method crée plus haut 
 
             if (ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
