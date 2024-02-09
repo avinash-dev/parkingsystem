@@ -58,14 +58,14 @@ public class FareCalculatorService {
                 //le taux horaire standard. Le résultat est ensuite défini comme 
                 //le prix du billet.
                     if(discount){
-                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR * (1 - 0.05));}
+                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR * (0.95));}
                     else{
                         ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR);
                     }
                     break;
                 case BIKE:
                     if(discount){
-                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR * (1 - 0.05));}
+                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR * (0.95));}
                     else{
                         ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR);
                     }
