@@ -58,14 +58,14 @@ import com.parkit.parkingsystem.model.Ticket;
                 //le taux horaire standard. Le résultat est ensuite défini comme 
                 //le prix du billet.
 <span class="fc bfc" id="L60" title="All 2 branches covered.">                    if(discount){</span>
-<span class="fc" id="L61">                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR * (1 - 0.05));}</span>
+<span class="fc" id="L61">                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR * (0.95));}</span>
                     else{
 <span class="fc" id="L63">                        ticket.setPrice(additionalHours * Fare.CAR_RATE_PER_HOUR);</span>
                     }
 <span class="fc" id="L65">                    break;</span>
                 case BIKE:
 <span class="fc bfc" id="L67" title="All 2 branches covered.">                    if(discount){</span>
-<span class="fc" id="L68">                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR * (1 - 0.05));}</span>
+<span class="fc" id="L68">                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR * (0.95));}</span>
                     else{
 <span class="fc" id="L70">                        ticket.setPrice(additionalHours * Fare.BIKE_RATE_PER_HOUR);</span>
                     }
