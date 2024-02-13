@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DataBaseConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">parking-system</a> &gt; <a href="index.source.html" class="el_package">com.parkit.parkingsystem.config</a> &gt; <span class="el_source">DataBaseConfig.java</span></div><h1>DataBaseConfig.java</h1><pre class="source lang-java linenums">package com.parkit.parkingsystem.config;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.sql.*;
+
+<span class="fc" id="L8">public class DataBaseConfig {</span>
+
+<span class="fc" id="L10">    private static final Logger logger = LogManager.getLogger(&quot;DataBaseConfig&quot;);</span>
+
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
+<span class="nc" id="L13">        logger.info(&quot;Create DB connection&quot;);</span>
+<span class="nc" id="L14">        Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
+<span class="nc" id="L15">        return DriverManager.getConnection(</span>
+<span class="nc" id="L16">                &quot;jdbc:mysql://localhost:3306/prod&quot;,&quot;root&quot;,&quot;rootroot&quot;);</span>
+    }
+
+    public void closeConnection(Connection con){
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if(con!=null){</span>
+            try {
+<span class="nc" id="L22">                con.close();</span>
+<span class="nc" id="L23">                logger.info(&quot;Closing DB connection&quot;);</span>
+<span class="nc" id="L24">            } catch (SQLException e) {</span>
+<span class="nc" id="L25">                logger.error(&quot;Error while closing connection&quot;,e);</span>
+            }
+        }
+<span class="nc" id="L28">    }</span>
+
+    public void closePreparedStatement(PreparedStatement ps) {
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        if(ps!=null){</span>
+            try {
+<span class="nc" id="L33">                ps.close();</span>
+<span class="nc" id="L34">                logger.info(&quot;Closing Prepared Statement&quot;);</span>
+<span class="nc" id="L35">            } catch (SQLException e) {</span>
+<span class="nc" id="L36">                logger.error(&quot;Error while closing prepared statement&quot;,e);</span>
+            }
+        }
+<span class="nc" id="L39">    }</span>
+
+    public void closeResultSet(ResultSet rs) {
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if(rs!=null){</span>
+            try {
+<span class="nc" id="L44">                rs.close();</span>
+<span class="nc" id="L45">                logger.info(&quot;Closing Result Set&quot;);</span>
+<span class="nc" id="L46">            } catch (SQLException e) {</span>
+<span class="nc" id="L47">                logger.error(&quot;Error while closing result set&quot;,e);</span>
+            }
+        }
+<span class="nc" id="L50">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

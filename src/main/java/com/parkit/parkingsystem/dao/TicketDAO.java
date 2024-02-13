@@ -86,4 +86,51 @@ public class TicketDAO {
         }
         return false;
     }
+
+    // MLO New method to get the number of tickets for a specific vehicle
+    //This method returns an integer representing the number of tickets for a specific vehicle
+    // identified by its registration number.
+
+    public int getNbTicket(String vehicleRegNumber) {
+    //local variables 
+        //Connection con = null;: Declares a Connection object and initializes it to null.
+        // This will be used to establish a connection to the database.
+        Connection con = null;
+        //int numberOfTickets = 0;: Initializes an integer variable to zero, 
+        //which will store the count of tickets for the specified vehicle.
+        int numberOfTickets = 0;
+        //try block
+        try {
+        //con = dataBaseConfig.getConnection();: Attempts to establish a 
+        //connection to the database using the dataBaseConfig object.
+            con = dataBaseConfig.getConnection();
+            // Creates a PreparedStatement object ps using the SQL query defined in DBConstants.GET_NB_TICKET
+            PreparedStatement ps = con.prepareStatement(DBConstants.GET_NB_TICKET);//This query is expected to return the count of tickets for a specific vehicle.
+            //Sets the parameter in the SQL query to the provided vehicleRegNumber. 
+            //This ensures that the query retrieves information for the specified vehicle.
+            ps.setString(1, vehicleRegNumber);
+            //Executes the SQL query and retrieves the result set, 
+            //which contains the count of tickets for the specified vehicle.
+            ResultSet rs = ps.executeQuery();
+            //Checks if the result set has at least one row (i.e., if there is data). 
+            //If true, it retrieves the count from the first column of the result set and assigns it 
+            //to the numberOfTickets variable.
+            if (rs.next()) {
+                numberOfTickets = rs.getInt(1);
+            }
+            //dataBaseConfig.closeResultSet(rs); and dataBaseConfig.closePreparedStatement(ps);: 
+            //Closes the ResultSet and PreparedStatement to free up resources.
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+        } catch (Exception ex) {
+            logger.error("Error fetching the number of tickets for a vehicle", ex);
+        } finally {
+            //Ensures that the database connection is closed, regardless of whether an exception occurred or not.
+            // It then returns the numberOfTickets variable, which contains the count of tickets for the specified vehicle.
+            dataBaseConfig.closeConnection(con);
+            return numberOfTickets;
+        
+    }
 }
+}
+
